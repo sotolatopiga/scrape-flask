@@ -67,7 +67,7 @@ def dump(history):
     with open(OUTPUT_PICKLE_FILENAME, "wb") as file:
         pickle.dump(history, file)
     lastWrite = history[-1]
-
+#
 def load():
     from CONSTANT import OUTPUT_PICKLE_FILENAME
     import pickle
