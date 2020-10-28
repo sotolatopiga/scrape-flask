@@ -74,7 +74,7 @@ def load():
     with open(OUTPUT_PICKLE_FILENAME, "rb") as file:
         return pickle.load(file)
 
-data = load()
+# data = load()
 #%%
 
 
