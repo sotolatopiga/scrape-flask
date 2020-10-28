@@ -1,1 +1,4 @@
-OUTPUT_PICKLE_FILENAME = "data.pickle"
+OUTPUT_PICKLE_FILENAME  = "data/data.pickle"
+OUTPUT_TEXT_FILENAME    = "data/parsed_HOSE_data.txt"
+SAVE_INTERVAL = 150
+SOMETHING_ELSE = 100

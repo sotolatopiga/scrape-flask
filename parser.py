@@ -86,7 +86,7 @@ def nnSell(hose):
     return reduce(lambda a, b: a + b, map(sell, hose))
 
 
-def compute(hose):
+def computeIndicators(hose):
     dic = {'buyPressure': buyPressure(hose), 'sellPressure': sellPressure(hose),
            'nnBuy':nnBuy(hose), 'nnSell':nnSell(hose), "totalValue": totalValue(hose),}
     return dic

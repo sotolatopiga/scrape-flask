@@ -1,4 +1,5 @@
-BIL = 1000*1000*1000
+BILLION = 1000 * 1000 * 1000
+from CONSTANT import SAVE_INTERVAL
 
 class C:
     COL_GIA3 = 3
@@ -54,6 +55,7 @@ def threading_func_wrapper(func, delay=0.5, args=None, start=True):
     return func_thread
 
 
+
 def mmap(*args):
     return list(map(*args))
 
@@ -63,16 +65,27 @@ def dump(history):
     import pickle
     n= len(history)
     if n == 0: return
-    if not n % 50 == 0: return
-    with open(OUTPUT_PICKLE_FILENAME, "wb") as file:
-        pickle.dump(history, file)
+    SAVE_INTERVAL = loadInterval()
+    if not n % SAVE_INTERVAL == 0: return
     lastWrite = history[-1]
+    fn ='-'.join([OUTPUT_PICKLE_FILENAME, lastWrite['time']['time']])
+    with open(f"{fn}({SAVE_INTERVAL}).pickle", "wb") as file:
+        pickle.dump(history, file)
+
+
 #
-def load():
+def loadData():
     from CONSTANT import OUTPUT_PICKLE_FILENAME
     import pickle
     with open(OUTPUT_PICKLE_FILENAME, "rb") as file:
         return pickle.load(file)
+
+def loadInterval():
+    with open("CONSTANT.py", "r") as file:
+        lines = file.readlines()
+    for line in lines:
+        if line.__contains__("SAVE_INTERVAL"):
+            return int(line.split("=")[1].strip())
 
 # data = load()
 #%%

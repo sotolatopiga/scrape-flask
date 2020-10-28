@@ -26,15 +26,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requestHandler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scratch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONSTANT.py" beforeDir="false" afterPath="$PROJECT_DIR$/CONSTANT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/start.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,11 +61,15 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -113,7 +129,7 @@
       <option name="presentableId" value="Default" />
       <updated>1603862009244</updated>
       <workItem from="1603862010374" duration="209000" />
-      <workItem from="1603862225717" duration="295000" />
+      <workItem from="1603862225717" duration="8056000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -122,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603862286454</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="v 1.0">
+      <created>1603863341435</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1603863341435</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,9 +179,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="v 1.0" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="769" y="272" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603862302589">
+    <state x="935" y="378" width="525" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1603870575962">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state x="769" y="272" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603862302589" />
+    <state x="935" y="378" width="525" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603870575962" />
+    <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl" timestamp="1603870565578">
+      <screen x="31" y="0" width="1889" height="1080" />
+    </state>
+    <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603870565578" />
+    <state x="769" y="272" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603863351170">
+      <screen x="31" y="0" width="1889" height="1080" />
+    </state>
+    <state x="769" y="272" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603863351170" />
   </component>
 </project>
