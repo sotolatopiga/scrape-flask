@@ -1,0 +1,1 @@
+OUTPUT_PICKLE_FILENAME = "data.pickle"
