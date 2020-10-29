@@ -76,7 +76,7 @@ def hoseSnapshotListener():
     o.getIndicators()
     print(f"\r#### {len(o.history)} ####",  end= "")
     res = f"#### {len(o.history)} #### successfully received data @ {timeStr}, " \
-          f"with {len(data)} stock symbols. Summary: {indicators}"
+          f"with {len(data)} stock symbols. Summary: {indicators[-1]}"
     return jsonify(res)
 
 

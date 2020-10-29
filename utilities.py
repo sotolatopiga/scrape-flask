@@ -162,3 +162,6 @@ def getIndicators(data):
     # a = mmap(computeIndicators, da
     # ta['parsed'])
     return list(map(foo, data))
+
+#####################################################################################
+# Convenient for displaying

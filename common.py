@@ -1,8 +1,6 @@
 BILLION = 1000 * 1000 * 1000
 from CONSTANT import SAVE_INTERVAL
 
-
-
 def exec3(cmd): #
   #print(f"****\n running: {cmd} ****")
   import subprocess
@@ -24,7 +22,6 @@ def threading_func_wrapper(func, delay=0.5, args=None, start=True):
     return func_thread
 
 
-
 def mmap(*args):
     return list(map(*args))
 
@@ -43,12 +40,12 @@ def dump(history):
         pickle.dump(history, file)
 
 
-#
 def loadData():
     from CONSTANT import OUTPUT_PICKLE_FILENAME
     import pickle
     with open(OUTPUT_PICKLE_FILENAME, "rb") as file:
         return pickle.load(file)
+
 
 def loadInterval():
     with open("CONSTANT.py", "r") as file:
