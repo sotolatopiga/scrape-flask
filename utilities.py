@@ -119,31 +119,6 @@ def computeIndicators(hose, time):
     return dic
 
 
-def getIndicatorsTokyoLondon(data):
-    lst = []
-    def foo(snapShot):
-        # t.keys = ['day', 'month', 'year', 'hour', 'minute', 'second', 'stamp', 'date', 'time', 'datetime']
-        t = snapShot['time']
-        time = (t['hour'] * 3600 + 60.0 * t['minute'] + t['second']) / 3600.0
-        indicators = computeIndicators(snapShot['parsed'], time)
-        # indicators['time'] = time
-        indicators['time'] = int(t['hour'] * 3600 + 60.0 * t['minute'] + t['second'])
-
-        res1 = {"month": indicators['time']/3600,
-               'city': 'buy',
-               'temperature': indicators['buyPressure']
-               }
-
-        res2 = {"month": indicators['time']/3600,
-               'city': 'sell',
-               'temperature': indicators['sellPressure']
-               }
-        lst.append(res1); lst.append(res2)
-
-    list(map(foo, data))
-    return lst
-
-
 def getIndicators(data):
     def foo(snapShot):
         # t.keys = ['day', 'month', 'year', 'hour', 'minute', 'second', 'stamp', 'date', 'time', 'datetime']

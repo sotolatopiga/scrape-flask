@@ -59,10 +59,4 @@ def shutdown_server():
     func()
 
 
-if __name__ == '__main__':
-    o = Context()
-    PORT = 5003
-    from werkzeug.serving import run_simple
-    threading_func_wrapper(lambda: run_simple('localhost', PORT, app))
-    print(f"http://localhost:{PORT}/api/hose-indicators-outound")
-    print(f"http://localhost:{PORT}/shutdown ")
+o = Context()

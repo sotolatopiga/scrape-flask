@@ -27,6 +27,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-production.py" beforeDir="false" afterPath="$PROJECT_DIR$/app-production.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +70,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../scrape2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../scrape2/app.py" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
@@ -137,7 +139,7 @@
       <workItem from="1603862225717" duration="18108000" />
       <workItem from="1603912455515" duration="2830000" />
       <workItem from="1603936571661" duration="137000" />
-      <workItem from="1603936909496" duration="18677000" />
+      <workItem from="1603936909496" duration="19850000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -202,7 +204,28 @@
       <option name="project" value="LOCAL" />
       <updated>1603951524643</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="v 1.07 added hose-outbound">
+      <created>1603976928806</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1603976928806</updated>
+    </task>
+    <task id="LOCAL-00011" summary="v 1.08 ipython version">
+      <created>1603976953669</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1603976953669</updated>
+    </task>
+    <task id="LOCAL-00012" summary="v 1.10 split to production and debug branches">
+      <created>1603977717008</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1603977717008</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,7 +261,9 @@
     <MESSAGE value="v 1.05 Discovered dicdiffer" />
     <MESSAGE value="v 1.06 Fixed parser vs utilities" />
     <MESSAGE value="v 1.07 added hose-outbound" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 1.07 added hose-outbound" />
+    <MESSAGE value="v 1.08 ipython version" />
+    <MESSAGE value="v 1.10 split to production and debug branches" />
+    <option name="LAST_COMMIT_MESSAGE" value="v 1.10 split to production and debug branches" />
   </component>
   <component name="WindowStateProjectService">
     <state x="433" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603912517899">
@@ -253,27 +278,31 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="935" y="378" width="525" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603870575962" />
-    <state x="279" y="330" width="444" height="506" key="FileChooserDialogImpl" timestamp="1603951647468">
+    <state x="412" y="101" width="1227" height="877" key="DiffContextDialog" timestamp="1603977533080">
+      <screen x="31" y="0" width="1889" height="1080" />
+    </state>
+    <state x="412" y="101" width="1227" height="877" key="DiffContextDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977533080" />
+    <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl" timestamp="1603977862369">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="279" y="330" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603951647468" />
-    <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603870565578" />
-    <state width="1180" height="275" key="GridCell.Tab.0.bottom" timestamp="1603951483062">
+    <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977862369" />
+    <state width="1381" height="328" key="GridCell.Tab.0.bottom" timestamp="1603977549824">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state width="1180" height="275" key="GridCell.Tab.0.bottom/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951483062" />
-    <state width="1180" height="275" key="GridCell.Tab.0.center" timestamp="1603951483062">
+    <state width="1381" height="328" key="GridCell.Tab.0.bottom/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977549824" />
+    <state width="1381" height="328" key="GridCell.Tab.0.center" timestamp="1603977549824">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state width="1180" height="275" key="GridCell.Tab.0.center/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951483062" />
-    <state width="1180" height="275" key="GridCell.Tab.0.left" timestamp="1603951483062">
+    <state width="1381" height="328" key="GridCell.Tab.0.center/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977549824" />
+    <state width="1381" height="328" key="GridCell.Tab.0.left" timestamp="1603977549824">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state width="1180" height="275" key="GridCell.Tab.0.left/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951483062" />
-    <state width="1180" height="275" key="GridCell.Tab.0.right" timestamp="1603951483062">
+    <state width="1381" height="328" key="GridCell.Tab.0.left/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977549824" />
+    <state width="1381" height="328" key="GridCell.Tab.0.right" timestamp="1603977549824">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state width="1180" height="275" key="GridCell.Tab.0.right/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951483062" />
+    <state width="1381" height="328" key="GridCell.Tab.0.right/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977549824" />
     <state x="682" y="558" width="713" height="395" key="GridCell.Tab.1.bottom" timestamp="1603936460057">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
@@ -314,10 +343,10 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603951533265">
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603976958148">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951533265" />
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603976958148" />
     <state x="682" y="558" width="713" height="418" key="dock-window-1" timestamp="1603936487606">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>

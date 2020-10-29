@@ -27,7 +27,6 @@ def mmap(*args):
 
 
 def dump(history):
-    print("WOW")
     from CONSTANT import OUTPUT_PICKLE_FILENAME
     import pickle
     n= len(history)
