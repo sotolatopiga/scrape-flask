@@ -26,13 +26,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sample.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ohlc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-production.py" beforeDir="false" afterPath="$PROJECT_DIR$/app-production.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forFrontend.py" beforeDir="false" afterPath="$PROJECT_DIR$/forFrontend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requestHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/requestHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/hoseParser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +71,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -416,13 +418,18 @@
     </state>
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603988093413" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603976958148" />
+    <state x="670" y="453" width="423" height="178" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604010558802">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="670" y="453" width="423" height="178" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604010558802" />
     <state x="682" y="558" width="713" height="418" key="dock-window-1" timestamp="1603936487606">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="682" y="558" width="713" height="418" key="dock-window-1/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603936487606" />
-    <state x="675" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1603951337529">
-      <screen x="31" y="0" width="1889" height="1080" />
+    <state x="655" y="239" width="684" height="678" key="search.everywhere.popup" timestamp="1604007105720">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="655" y="239" width="684" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604007105720" />
     <state x="675" y="239" width="672" height="678" key="search.everywhere.popup/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951337529" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
