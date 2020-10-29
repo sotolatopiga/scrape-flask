@@ -31,7 +31,7 @@ class Context:
 
 
     def getIndicators(self):
-        print(self.history[-1].keys())
+        # print(self.history[-1].keys())
         # print("hisotry: ", self.history[-1])
         getIndicators([self.history[-1]])
         # self.maybeComputeIndicators()

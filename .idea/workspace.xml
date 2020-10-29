@@ -28,8 +28,6 @@
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilities.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +68,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../scrape2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
@@ -139,7 +137,7 @@
       <workItem from="1603862225717" duration="18108000" />
       <workItem from="1603912455515" duration="2830000" />
       <workItem from="1603936571661" duration="137000" />
-      <workItem from="1603936909496" duration="13172000" />
+      <workItem from="1603936909496" duration="18677000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -197,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603951140926</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="v 1.07 added hose-outbound">
+      <created>1603951524643</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603951524643</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,26 +253,27 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="935" y="378" width="525" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603870575962" />
-    <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl" timestamp="1603870565578">
+    <state x="279" y="330" width="444" height="506" key="FileChooserDialogImpl" timestamp="1603951647468">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
+    <state x="279" y="330" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603951647468" />
     <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603870565578" />
-    <state width="1326" height="331" key="GridCell.Tab.0.bottom" timestamp="1603951202325">
+    <state width="1180" height="275" key="GridCell.Tab.0.bottom" timestamp="1603951483062">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state width="1326" height="331" key="GridCell.Tab.0.bottom/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951202325" />
-    <state width="1326" height="331" key="GridCell.Tab.0.center" timestamp="1603951202325">
+    <state width="1180" height="275" key="GridCell.Tab.0.bottom/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951483062" />
+    <state width="1180" height="275" key="GridCell.Tab.0.center" timestamp="1603951483062">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state width="1326" height="331" key="GridCell.Tab.0.center/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951202325" />
-    <state width="1326" height="331" key="GridCell.Tab.0.left" timestamp="1603951202324">
+    <state width="1180" height="275" key="GridCell.Tab.0.center/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951483062" />
+    <state width="1180" height="275" key="GridCell.Tab.0.left" timestamp="1603951483062">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state width="1326" height="331" key="GridCell.Tab.0.left/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951202324" />
-    <state width="1326" height="331" key="GridCell.Tab.0.right" timestamp="1603951202325">
+    <state width="1180" height="275" key="GridCell.Tab.0.left/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951483062" />
+    <state width="1180" height="275" key="GridCell.Tab.0.right" timestamp="1603951483062">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state width="1326" height="331" key="GridCell.Tab.0.right/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951202325" />
+    <state width="1180" height="275" key="GridCell.Tab.0.right/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951483062" />
     <state x="682" y="558" width="713" height="395" key="GridCell.Tab.1.bottom" timestamp="1603936460057">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
@@ -308,10 +314,10 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603950582488">
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603951533265">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603950582488" />
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603951533265" />
     <state x="682" y="558" width="713" height="418" key="dock-window-1" timestamp="1603936487606">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
