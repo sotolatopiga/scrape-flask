@@ -1,4 +1,4 @@
-from flask import request
+from flask import request, jsonify
 from utilities import parseHose, computeIndicators
 
 _lastPsData = ""
@@ -23,13 +23,24 @@ def handleHoseDataPost(o):
 def handlePsDataPost(o):
     global _lastPsData
     data = request.get_json()
-    data['data'] = data['data'] + str(len(o.history))
     noUpdate = data['data'] == _lastPsData
+    orders = list(reversed(data['orders']))
+    o.maybeUpdateOrders(orders)
     if not noUpdate:
         _lastPsData = data['data']
         o.psHistory.append(data['data'])
     hour = toHour(data)
-    return noUpdate, hour, data
+    return {'psHistory': len(o.psHistory),
+            'psOrder' : len(o.psOrders),
+            'msg': "from /api/ps-snapshot-inbound",  }
+
+
+def handlePsDataGet(o):
+    return jsonify({'msg': "from /api/ps-ohlc-outbound", 'data': o.psOrders})
+
+def handleHoseDataGet(o):
+    o.maybeUpdatedicators()
+    return jsonify({'data': o.indicators, 'msg': "from /api/hose-indicators-outbound"})
 
 
 #################################################################################################################
