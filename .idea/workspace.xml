@@ -26,10 +26,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sample.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-production.py" beforeDir="false" afterPath="$PROJECT_DIR$/app-production.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forFrontend.py" beforeDir="false" afterPath="$PROJECT_DIR$/forFrontend.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requestHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/requestHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/hoseParser.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +61,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="JupyterTrust" id="fe3f73bd-c7e6-4176-b1fa-df7e63e0c881" />
+  <component name="JupyterTrust" id="6d25b8de-739b-4ea0-824d-354c547fd56b" />
   <component name="ProjectId" id="1jUcFoS57ZHJGXGrIghKtTX93Nr" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -71,8 +74,8 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../scrape2/app.py" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -142,7 +145,12 @@
       <workItem from="1603936571661" duration="137000" />
       <workItem from="1603936909496" duration="19850000" />
       <workItem from="1603980056510" duration="206000" />
-      <workItem from="1603980284524" duration="6911000" />
+      <workItem from="1603980284524" duration="8635000" />
+      <workItem from="1603996755701" duration="41000" />
+      <workItem from="1603996804531" duration="76000" />
+      <workItem from="1603996919677" duration="158000" />
+      <workItem from="1603997364709" duration="54000" />
+      <workItem from="1603997428069" duration="1429000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -263,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603987766891</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="v 1.12 added msg to server response, Reorganized project so that requestHandlers can be redeclare on the fly.">
+      <created>1603988086125</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1603988086125</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,9 +330,10 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="633" y="332" width="749" height="409" key="#com.intellij.fileTypes.FileTypeChooser/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603940424046" />
-    <state x="935" y="378" width="525" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1603870575962">
-      <screen x="31" y="0" width="1889" height="1080" />
+    <state x="919" y="378" width="556" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1603997416891">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="919" y="378" width="556" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1603997416891" />
     <state x="935" y="378" width="525" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603870575962" />
     <state x="178" y="324" width="1483" height="400" key="#xdebugger.XInspectDialog" timestamp="1603985439861">
       <screen x="31" y="0" width="1889" height="1080" />
@@ -328,9 +344,10 @@
     </state>
     <state x="412" y="101" width="1227" height="877" key="DiffContextDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987702568" />
     <state x="412" y="101" width="1227" height="877" key="DiffContextDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977533080" />
-    <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl" timestamp="1603977862369">
-      <screen x="31" y="0" width="1889" height="1080" />
+    <state x="954" y="280" width="494" height="506" key="FileChooserDialogImpl" timestamp="1603997406309">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="954" y="280" width="494" height="506" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1603997406309" />
     <state x="279" y="330" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603951647468" />
     <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977862369" />
     <state width="1381" height="328" key="GridCell.Tab.0.bottom" timestamp="1603977549824">
@@ -385,18 +402,19 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="847" y="295" width="726" height="483" key="MultipleFileMergeDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987788153" />
-    <state x="464" y="175" key="SettingsEditor" timestamp="1603900230185">
-      <screen x="31" y="0" width="1889" height="1080" />
+    <state x="440" y="175" width="1022" height="734" key="SettingsEditor" timestamp="1603997440249">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="440" y="175" width="1022" height="734" key="SettingsEditor/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1603997440249" />
     <state x="464" y="175" key="SettingsEditor/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603900230185" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1603935611631">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603987768543">
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603988093413">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987768543" />
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603988093413" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603976958148" />
     <state x="682" y="558" width="713" height="418" key="dock-window-1" timestamp="1603936487606">
       <screen x="31" y="0" width="1889" height="1080" />

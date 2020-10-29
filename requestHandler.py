@@ -1,8 +1,7 @@
 from flask import request, jsonify
-from utilities import parseHose, computeIndicators
+from hoseParser import parseHose, computeIndicators
 
 _lastPsData = ""
-
 
 def toHour(data):
     time = data['time']

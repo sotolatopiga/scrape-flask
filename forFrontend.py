@@ -1,4 +1,4 @@
-from utilities import computeIndicators
+from hoseParser import computeIndicators
 
 def computeIndicatorsFromSnapShot(parsed, time):
     dic = computeIndicators(parsed, time)
