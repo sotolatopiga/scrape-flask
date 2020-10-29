@@ -1,9 +1,10 @@
-
+from Test import loadData_2020_10_28
 from flask import Flask, jsonify
 from flask_cors import CORS
 import numpy as np
 from utilities import *
 # from receiveData import *
+from common import dump
 import json, pickle
 from requestHandler import handleHoseDataPost
 
@@ -12,17 +13,46 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/api/data', methods=['GET', 'POST', 'DELETE', 'PUT'])
+class Context:
+
+    def __init__(self):
+        self.history = []
+        self.indicators = []
+
+
+    def maybeComputeIndicators(self):
+        if len(self.indicators) < len(self.history):
+            lst = []
+            for i in range(len(self.indicators), len(self.history)):
+                lst.append(self.history[i])
+            indicatorsUpdate = getIndicators(lst)
+            self.indicators += indicatorsUpdate
+        assert len(self.indicators) == len(self.history)
+
+
+    def getIndicators(self):
+        print(self.history[-1].keys())
+        # print("hisotry: ", self.history[-1])
+        getIndicators([self.history[-1]])
+        # self.maybeComputeIndicators()
+        return self.indicators
+
+
+    def addToHistory(self, data):
+        self.history.append(data)
+
+
+    def maybeDumpHistoryToDisk(self):
+        dump(self.history)
+
+
+o = Context()
+
+
+@app.route('/api/phaisinh-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def psListener():
     from flask import request
     return
-
-def loadData_2020_10_28():
-    import pickle
-    fn = "data/data.pickle-14_48_13(150).pickle"
-    with open(fn, "rb") as file:
-        data = pickle.load(file)
-    return data
 
 
 @app.route('/')
@@ -31,25 +61,20 @@ def index():
     return json.dumps(a)
 
 
-
-@app.route('/user/<name>')
-def user(name):
-    print(name)
-    a = {'name': name, 'age': 14, 'isEmployed': True}
-    return json.dumps(a)
+@app.route('/api/hose-indicators-outound', methods=['GET', 'POST', 'DELETE', 'PUT'])
+def hoseOutputIndicators():
+    return jsonify({"msg": "cool"})
 
 
-
-history =[]
-@app.route('/api/hose-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
-def hoseListener():
-    from common import dump
+@app.route('/api/hose-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
+def hoseSnapshotListener():
     from flask import request
     timeObj, timeStr, data, indicators = handleHoseDataPost(request)
-    history.append({'time': timeObj, 'parsed': data})
-    dump(history)
-    print(f"\r#### {len(history)} ####",  end= "")
-    res = f"#### {len(history)} #### successfully received data @ {timeStr}, " \
+    o.addToHistory({'time': timeObj, 'parsed': data})
+    o.maybeDumpHistoryToDisk()
+    o.getIndicators()
+    print(f"\r#### {len(o.history)} ####",  end= "")
+    res = f"#### {len(o.history)} #### successfully received data @ {timeStr}, " \
           f"with {len(data)} stock symbols. Summary: {indicators}"
     return jsonify(res)
 
