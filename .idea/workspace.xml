@@ -27,9 +27,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requestHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/requestHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-production.py" beforeDir="false" afterPath="$PROJECT_DIR$/app-production.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +56,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="JupyterTrust" id="fe3f73bd-c7e6-4176-b1fa-df7e63e0c881" />
+  <component name="JupyterTrust" id="6d25b8de-739b-4ea0-824d-354c547fd56b" />
   <component name="ProjectId" id="1jUcFoS57ZHJGXGrIghKtTX93Nr" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -71,7 +69,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../scrape2/app.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
@@ -143,6 +141,7 @@
       <workItem from="1603936909496" duration="19850000" />
       <workItem from="1603980056510" duration="206000" />
       <workItem from="1603980284524" duration="6911000" />
+      <workItem from="1603999286326" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
