@@ -27,8 +27,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requestHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/requestHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilities.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +142,7 @@
       <workItem from="1603936571661" duration="137000" />
       <workItem from="1603936909496" duration="19850000" />
       <workItem from="1603980056510" duration="206000" />
-      <workItem from="1603980284524" duration="6686000" />
+      <workItem from="1603980284524" duration="6911000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -255,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603987740207</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="v 1.12 added msg to server response, Reorganized project so that requestHandlers can be redeclare on the fly.">
+      <created>1603987766891</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1603987766891</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,6 +381,10 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="682" y="558" width="713" height="395" key="GridCell.Tab.2.right/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603936460053" />
+    <state x="847" y="295" width="726" height="483" key="MultipleFileMergeDialog" timestamp="1603987788153">
+      <screen x="31" y="0" width="1889" height="1080" />
+    </state>
+    <state x="847" y="295" width="726" height="483" key="MultipleFileMergeDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987788153" />
     <state x="464" y="175" key="SettingsEditor" timestamp="1603900230185">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
@@ -381,10 +393,10 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603987744033">
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603987768543">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987744033" />
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987768543" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603976958148" />
     <state x="682" y="558" width="713" height="418" key="dock-window-1" timestamp="1603936487606">
       <screen x="31" y="0" width="1889" height="1080" />

@@ -11,13 +11,13 @@ def toHour(data):
 
 def handleHoseDataPost(o):
     raw = request.get_json()
-    time = raw['time']
+    timeObj = raw['time']
     data = raw['data']
     data = parseHose(data)
-    timestr = time['time'].replace("_", ":", )
-    indicators = computeIndicators(data, time); indicators['hour'] = toHour(raw)
+    timeStr = timeObj['time'].replace("_", ":", )
+    indicators = computeIndicators(data, timeObj); indicators['hour'] = toHour(raw)
     print(f"\r#### {len(o.history)} ####", end="")
-    return time, timestr, data, indicators
+    return timeObj, timeStr, data, indicators
 
 
 def handlePsDataPost(o):

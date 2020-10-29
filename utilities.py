@@ -34,6 +34,7 @@ class C:
     CHOSE="hoseSnapShot"
     LOCAL="local"
 
+
 def parsePrice(x):
     if x.replace(".", "").isnumeric(): return float(x)
     return 0

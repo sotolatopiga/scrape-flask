@@ -18,6 +18,7 @@ class Context:
             return True
         else: return False
 
+
     def maybeUpdatedicators(self):
         def foo(i):
             return computeIndicatorsFromSnapShot(self.history[i]['parsed'], self.history[i]['time'])
