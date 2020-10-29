@@ -27,7 +27,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requestHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/requestHandler.py" afterDir="false" />
     </list>
@@ -142,7 +141,7 @@
       <workItem from="1603936571661" duration="137000" />
       <workItem from="1603936909496" duration="19850000" />
       <workItem from="1603980056510" duration="206000" />
-      <workItem from="1603980284524" duration="6498000" />
+      <workItem from="1603980284524" duration="6686000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -242,7 +241,21 @@
       <option name="project" value="LOCAL" />
       <updated>1603985089895</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="v 1.12 added msg to server response, Reorganized project so that requestHandlers can be redeclare on the fly.">
+      <created>1603987638718</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1603987638718</updated>
+    </task>
+    <task id="LOCAL-00016" summary="v 1.12 added msg to server response, Reorganized project so that requestHandlers can be redeclare on the fly.">
+      <created>1603987740207</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1603987740207</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,7 +295,8 @@
     <MESSAGE value="v 1.10 split to production and debug branches" />
     <MESSAGE value="v 1.11 added PhaiSinh snapshot ingestion" />
     <MESSAGE value="v 1.11 added Phai Sinh snapshot ingestion" />
-    <option name="LAST_COMMIT_MESSAGE" value="v 1.11 added Phai Sinh snapshot ingestion" />
+    <MESSAGE value="v 1.12 added msg to server response, Reorganized project so that requestHandlers can be redeclare on the fly." />
+    <option name="LAST_COMMIT_MESSAGE" value="v 1.12 added msg to server response, Reorganized project so that requestHandlers can be redeclare on the fly." />
   </component>
   <component name="WindowStateProjectService">
     <state x="433" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603912517899">
@@ -301,9 +315,10 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="178" y="324" width="1483" height="400" key="#xdebugger.XInspectDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603985439861" />
-    <state x="412" y="101" width="1227" height="877" key="DiffContextDialog" timestamp="1603977533080">
+    <state x="412" y="101" width="1227" height="877" key="DiffContextDialog" timestamp="1603987702568">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
+    <state x="412" y="101" width="1227" height="877" key="DiffContextDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987702568" />
     <state x="412" y="101" width="1227" height="877" key="DiffContextDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977533080" />
     <state x="970" y="280" width="444" height="506" key="FileChooserDialogImpl" timestamp="1603977862369">
       <screen x="31" y="0" width="1889" height="1080" />
@@ -366,9 +381,10 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603976958148">
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603987744033">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
+    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987744033" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603976958148" />
     <state x="682" y="558" width="713" height="418" key="dock-window-1" timestamp="1603936487606">
       <screen x="31" y="0" width="1889" height="1080" />

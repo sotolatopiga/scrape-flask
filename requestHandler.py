@@ -38,6 +38,7 @@ def handlePsDataPost(o):
 def handlePsDataGet(o):
     return jsonify({'msg': "from /api/ps-ohlc-outbound", 'data': o.psOrders})
 
+
 def handleHoseDataGet(o):
     o.maybeUpdatedicators()
     return jsonify({'data': o.indicators, 'msg': "from /api/hose-indicators-outbound"})

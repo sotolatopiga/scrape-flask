@@ -41,7 +41,6 @@ def hose_indicators_outbound():
     return handleHoseDataGet(o)
 
 
-
 # Return phai sinh OHLC data for charts
 @app.route('/api/ps-ohlc-outbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def ps_ohlc_outbound():
