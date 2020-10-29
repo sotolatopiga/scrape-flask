@@ -1,12 +1,22 @@
 from common import mmap, dump, threading_func_wrapper
 from forFrontend import computeIndicatorsFromSnapShot
+
+
 class Context:
 
     def __init__(self, indicatorFunc= computeIndicatorsFromSnapShot):
         self.history = []
         self.indicators = []
         self.psHistory = []
+        self.psOrders = []
         self.indicatorsFunc = indicatorFunc
+
+
+    def maybeUpdateOrders(self, orders):
+        if len(orders) > len(self.psOrders):
+            self.psOrders = orders
+            return True
+        else: return False
 
     def maybeUpdatedicators(self):
         def foo(i):

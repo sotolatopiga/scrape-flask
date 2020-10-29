@@ -4,12 +4,13 @@ from flask_cors import CORS
 from common import mmap, dump, threading_func_wrapper
 from Context import Context
 import json, pickle
-from requestHandler import handleHoseDataPost, handlePsDataPost
+from werkzeug.serving import run_simple
+from requestHandler import handleHoseDataPost, handlePsDataPost, handlePsDataGet, handleHoseDataGet
 
 app = Flask(__name__)
 CORS(app)
 
-#############################################################################################################
+############################################# STATIC HTML PAGES ##################################$###########
 
 def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
@@ -25,12 +26,6 @@ def shutdown():
     return "Successfully closed server"
 
 
-@app.route('/api/phaisinh-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
-def psListener():
-    from flask import request
-    return
-
-
 # Home page
 @app.route('/')
 def index():
@@ -38,21 +33,29 @@ def index():
     return json.dumps(a)
 
 
+########################################## OUTBOUND DATA SERVICES ###########################################
+
 # Return hose indicators for charts
 @app.route('/api/hose-indicators-outound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def hose_indicators_outbound():
-    o.maybeUpdatedicators()
-    return jsonify(o.indicators)
+    return handleHoseDataGet(o)
 
+
+
+# Return phai sinh OHLC data for charts
+@app.route('/api/ps-ohlc-outbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
+def ps_ohlc_outbound():
+    return handlePsDataGet(o)
+
+########################################### INBOUND INGESTION ################################################
 
 # Ingest phai sinh data
 @app.route('/api/ps-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def ps_snapshot_inbound():
-    noUpdate, hour, data =handlePsDataPost(o)
-    return jsonify({'psHistory': len(o.psHistory)})
+    return jsonify(handlePsDataPost(o))
 
 
-# Ingest HOSE data
+# Ingest Hose data
 @app.route('/api/hose-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def hose_snapshot_inbound():
     timeObj, timeStr, data, indicators = handleHoseDataPost(o)
@@ -61,11 +64,11 @@ def hose_snapshot_inbound():
     o.indicators.append(indicators)
     return jsonify(indicators) # return jsonify(res)
 
+###############################################################################################################
 
 if __name__ == '__main__':
     o = Context()
     PORT = 5003
-    from werkzeug.serving import run_simple
     threading_func_wrapper(lambda: run_simple('localhost', PORT, app))
     print(f"http://localhost:{PORT}/api/hose-indicators-outound")
     print(f"http://localhost:{PORT}/shutdown ")
