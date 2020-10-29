@@ -48,6 +48,7 @@ class Context:
 
 o = Context()
 
+#############################################################################################################
 
 @app.route('/api/phaisinh-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def psListener():
@@ -63,7 +64,7 @@ def index():
 
 @app.route('/api/hose-indicators-outound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def hoseOutputIndicators():
-    return jsonify({"msg": "cool"})
+    return o.indicators
 
 
 @app.route('/api/hose-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
@@ -78,13 +79,4 @@ def hoseSnapshotListener():
           f"with {len(data)} stock symbols. Summary: {indicators}"
     return jsonify(res)
 
-# data = loadData_2020_10_28()
-#%%
-######################################################################################################
-#with open("sample.pickle", "wb") as file: pickle.dump(x[1000:1500], file)
-
-
-
-# with open("sample.pickle", "rb") as file: x = pickle. load(file)
-# indicators = getIndicators(x);print(indicators[200:300])
 

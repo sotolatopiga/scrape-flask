@@ -147,7 +147,6 @@ def getIndicatorsTokyoLondon(data):
 def getIndicators(data):
     def foo(snapShot):
         # t.keys = ['day', 'month', 'year', 'hour', 'minute', 'second', 'stamp', 'date', 'time', 'datetime']
-        print("snapShot: ", snapShot)
         t  = snapShot['time']
         time = (t['hour'] * 3600 + 60.0*t['minute'] + t['second']) / 3600.0
         indicators = computeIndicators(snapShot['parsed'], time)
