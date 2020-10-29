@@ -1,11 +1,38 @@
-import os, pickle, json
-from os import listdir
-from os.path import isfile, join
 from functools import reduce
-from common import *
-from random import random
-import pandas as pd
 
+BILLION = 1000000000
+
+class C:
+    COL_GIA3 = 3
+    COL_VOL3 = 4
+    COL_GIA2 = 5
+    COL_VOL2 = 6
+    COL_GIA1 = 7
+    COL_VOL1 = 8
+
+    COL_GIA = 9
+    COL_VOL = 10
+
+    COL_GIA1b = 12
+    COL_VOL1b = 13
+    COL_GIA2b = 14
+    COL_VOL2b = 15
+    COL_GIA3b = 16
+    COL_VOL3b = 17
+    COL_TOTAL_VOL = 18
+    COL_AVG_PRICE = 21
+    COL_HIGH = 22
+    COL_LOW = 23
+    NN_BUY = 24
+    NN_SELL = 25
+
+    DATA_2_PLOT_RATIO = 100000
+
+    CTIME = "times"
+    CBUYP = "buyPressure"
+    CSELLP = "sellPressure"
+    CHOSE="hoseSnapShot"
+    LOCAL="local"
 
 def parsePrice(x):
     if x.replace(".", "").isnumeric(): return float(x)
@@ -43,7 +70,7 @@ def parseHose(data):
         raw[C.NN_SELL] = parseVol(raw[C.NN_SELL]) * 10
         raw[C.NN_BUY] = parseVol(raw[C.NN_BUY]) * 10
         dic[row[0]] = raw
-    mmap(parseRow, data)
+    list(map(parseRow, data))
     return dic
 
 
@@ -53,7 +80,7 @@ def sellPressure(hose):
         return data[C.COL_VOL1b] * data[C.COL_GIA1b] + \
                data[C.COL_VOL2b] * data[C.COL_GIA2b] + \
                data[C.COL_VOL3b] * data[C.COL_GIA3b]
-    return reduce(lambda a, b: a + b, map(stockSellPressure, hose))
+    return reduce(lambda a, b: a + b, map(stockSellPressure, hose)) / BILLION
 
 
 def buyPressure(hose):
@@ -62,31 +89,44 @@ def buyPressure(hose):
         return data[C.COL_VOL1] * data[C.COL_GIA1] + \
                data[C.COL_VOL2] * data[C.COL_GIA2] + \
                data[C.COL_VOL3] * data[C.COL_GIA3]
-    return reduce(lambda a, b: a + b, map(stockBuyPressure, hose))
+    return reduce(lambda a, b: a + b, map(stockBuyPressure, hose)) / BILLION
 
 
 def totalValue(hose):
     def stockValue(stock):
         data = hose[stock]
         return data[C.COL_AVG_PRICE] * data[C.COL_TOTAL_VOL]
-    return reduce(lambda a, b: a + b, map(stockValue, hose))
+    return reduce(lambda a, b: a + b, map(stockValue, hose)) / BILLION
 
 
 def nnBuy(hose):
     def buy(stock):
         data = hose[stock]
         return data[C.COL_AVG_PRICE] * data[C.NN_BUY]
-    return reduce(lambda a, b: a + b, map(buy, hose))
+    return reduce(lambda a, b: a + b, map(buy, hose)) / BILLION
 
 
 def nnSell(hose):
     def sell(stock):
         data = hose[stock]
         return data[C.COL_AVG_PRICE] * data[C.NN_SELL]
-    return reduce(lambda a, b: a + b, map(sell, hose))
+    return reduce(lambda a, b: a + b, map(sell, hose)) / BILLION
 
 
-def computeIndicators(hose):
-    dic = {'buyPressure': buyPressure(hose), 'sellPressure': sellPressure(hose),
+def computeIndicators(hose, time):
+    dic = {'time': time,
+            'buyPressure': buyPressure(hose), 'sellPressure': sellPressure(hose),
            'nnBuy':nnBuy(hose), 'nnSell':nnSell(hose), "totalValue": totalValue(hose),}
     return dic
+
+
+def getIndicators(data):
+    def foo(snapShot):
+        t  = snapShot['time']
+        time = (t['hour'] * 3600 + 60.0*t['minute'] + t['minute']) / 3600.0
+        indicators = computeIndicators(snapShot['parsed'], time)
+        indicators['time'] = time
+        return indicators
+    # a = mmap(computeIndicators, da
+    # ta['parsed'])
+    return list(map(foo, data))

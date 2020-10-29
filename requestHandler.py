@@ -1,13 +1,13 @@
 def handleHoseDataPost(req):
     from flask import request
-    from parser import parseHose, computeIndicators
+    from parserOld import parseHose, computeIndicators
     data = request.get_json()
     timeObj = data['time']
     time = data['time']
     data = data['data']
     data = parseHose(data)
     timestr = time['time'].replace("_", ":", )
-    indicators = computeIndicators(data)
+    indicators = computeIndicators(data, time)
     return timeObj, timestr, data, indicators
 
 #################################################################################################################
