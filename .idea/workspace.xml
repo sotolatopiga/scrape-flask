@@ -27,9 +27,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-production.py" beforeDir="false" afterPath="$PROJECT_DIR$/app-production.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parserOld.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requestHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/requestHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilities.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +58,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="JupyterTrust" id="fe3f73bd-c7e6-4176-b1fa-df7e63e0c881" />
   <component name="ProjectId" id="1jUcFoS57ZHJGXGrIghKtTX93Nr" />
@@ -140,6 +143,8 @@
       <workItem from="1603912455515" duration="2830000" />
       <workItem from="1603936571661" duration="137000" />
       <workItem from="1603936909496" duration="19850000" />
+      <workItem from="1603980056510" duration="206000" />
+      <workItem from="1603980284524" duration="3963000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>

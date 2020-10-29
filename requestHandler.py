@@ -1,15 +1,36 @@
-def handleHoseDataPost(req):
-    from flask import request
-    from parserOld import parseHose, computeIndicators
-    data = request.get_json()
+from flask import request
+from utilities import parseHose, computeIndicators
+
+_lastPsData = ""
+
+
+def toHour(data):
     time = data['time']
-    data = data['data']
+    return (time['hour'] * 3600 + time['minute'] * 60 + time['second']) / 3600
+
+
+def handleHoseDataPost(o):
+    raw = request.get_json()
+    time = raw['time']
+    data = raw['data']
     data = parseHose(data)
-    hour =  (time['hour'] * 3600 + time['minute'] * 60 + time['second']) / 3600
     timestr = time['time'].replace("_", ":", )
-    indicators = computeIndicators(data, time); indicators['hour'] = hour
-    # For front end purpose
+    indicators = computeIndicators(data, time); indicators['hour'] = toHour(raw)
+    print(f"\r#### {len(o.history)} ####", end="")
     return time, timestr, data, indicators
+
+
+def handlePsDataPost(o):
+    global _lastPsData
+    data = request.get_json()
+    data['data'] = data['data'] + str(len(o.history))
+    noUpdate = data['data'] == _lastPsData
+    if not noUpdate:
+        _lastPsData = data['data']
+        o.psHistory.append(data['data'])
+    hour = toHour(data)
+    return noUpdate, hour, data
+
 
 #################################################################################################################
 
@@ -37,7 +58,11 @@ fetch('http://127.0.0.1:5000/api/echo-json', {
 
 """
 Requesting data from the host
-fetch('http://localhost:5000')
+
+function myFoo() {
+    fetch('http://localhost:5003/api/hose-indicators-outound')
   .then(res => res.json())
-  .then(console.log)
+  .then(res => console.log(res))}
+
+myRequestInterval = setInterval(myFoo, 3000); myFoo();
 """

@@ -112,31 +112,21 @@ def nnSell(hose):
         return data[C.COL_AVG_PRICE] * data[C.NN_SELL]
     return reduce(lambda a, b: a + b, map(sell, hose)) / BILLION
 
+
 def computeIndicators(hose, time):
     dic = {'time': time,
-            'buyPressure': buyPressure(hose) *10, 'sellPressure': sellPressure(hose),
+            'buyPressure': buyPressure(hose), 'sellPressure': sellPressure(hose),
            'nnBuy':nnBuy(hose), 'nnSell':nnSell(hose), "totalValue": totalValue(hose),}
     return dic
 
 
 def getIndicators(data):
     def foo(snapShot):
-        # t.keys = ['day', 'month', 'year', 'hour', 'minute', 'second', 'stamp', 'date', 'time', 'datetime']
         t  = snapShot['time']
-        time = (t['hour'] * 3600 + 60.0*t['minute'] + t['second']) / 3600.0
+        time = (t['hour'] * 3600 + 60.0*t['minute'] + t['minute']) / 3600.0
         indicators = computeIndicators(snapShot['parsed'], time)
-        # indicators['time'] = time
-        indicators['time'] = int(t['hour'] * 3600 + 60.0*t['minute'] + t['second'])
-
-        res = {"year": indicators['time'],
-               'buy': indicators['buyPressure'],
-               'sell': indicators['sellPressure']
-               }
-
-        return res
+        indicators['time'] = time
+        return indicators
     # a = mmap(computeIndicators, da
     # ta['parsed'])
     return list(map(foo, data))
-
-#####################################################################################
-# Convenient for displaying

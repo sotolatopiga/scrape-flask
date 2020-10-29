@@ -5,6 +5,7 @@ class Context:
     def __init__(self, indicatorFunc= computeIndicatorsFromSnapShot):
         self.history = []
         self.indicators = []
+        self.psHistory = []
         self.indicatorsFunc = indicatorFunc
 
     def maybeUpdatedicators(self):
