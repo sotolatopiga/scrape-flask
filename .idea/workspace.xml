@@ -26,9 +26,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ohlc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postProcessing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sample.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONSTANT.py" beforeDir="false" afterPath="$PROJECT_DIR$/CONSTANT.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-production.py" beforeDir="false" afterPath="$PROJECT_DIR$/app-production.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ohlc.py" beforeDir="false" afterPath="$PROJECT_DIR$/ohlc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +62,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="JupyterTrust" id="6d25b8de-739b-4ea0-824d-354c547fd56b" />
+  <component name="JupyterTrust" id="fe3f73bd-c7e6-4176-b1fa-df7e63e0c881" />
   <component name="ProjectId" id="1jUcFoS57ZHJGXGrIghKtTX93Nr" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -80,11 +85,11 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/data" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
     </key>
   </component>
   <component name="RunManager">
@@ -153,6 +158,11 @@
       <workItem from="1603996919677" duration="158000" />
       <workItem from="1603997364709" duration="54000" />
       <workItem from="1603997428069" duration="1429000" />
+      <workItem from="1604013210259" duration="949000" />
+      <workItem from="1604015829463" duration="678000" />
+      <workItem from="1604018861237" duration="6629000" />
+      <workItem from="1604045805486" duration="1554000" />
+      <workItem from="1604050335752" duration="715000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -280,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603988086125</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="1.14 OHCL baby!">
+      <created>1604011198763</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1604011198763</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,7 +338,8 @@
     <MESSAGE value="v 1.11 added PhaiSinh snapshot ingestion" />
     <MESSAGE value="v 1.11 added Phai Sinh snapshot ingestion" />
     <MESSAGE value="v 1.12 added msg to server response, Reorganized project so that requestHandlers can be redeclare on the fly." />
-    <option name="LAST_COMMIT_MESSAGE" value="v 1.12 added msg to server response, Reorganized project so that requestHandlers can be redeclare on the fly." />
+    <MESSAGE value="1.14 OHCL baby!" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.14 OHCL baby!" />
   </component>
   <component name="WindowStateProjectService">
     <state x="433" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603912517899">
@@ -337,9 +355,10 @@
     </state>
     <state x="919" y="378" width="556" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1603997416891" />
     <state x="935" y="378" width="525" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603870575962" />
-    <state x="178" y="324" width="1483" height="400" key="#xdebugger.XInspectDialog" timestamp="1603985439861">
-      <screen x="31" y="0" width="1889" height="1080" />
+    <state x="149" y="324" width="1483" height="400" key="#xdebugger.XInspectDialog" timestamp="1604011786249">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="149" y="324" key="#xdebugger.XInspectDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011786249" />
     <state x="178" y="324" width="1483" height="400" key="#xdebugger.XInspectDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603985439861" />
     <state x="412" y="101" width="1227" height="877" key="DiffContextDialog" timestamp="1603987702568">
       <screen x="31" y="0" width="1889" height="1080" />
@@ -400,9 +419,10 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="682" y="558" width="713" height="395" key="GridCell.Tab.2.right/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603936460053" />
-    <state x="847" y="295" width="726" height="483" key="MultipleFileMergeDialog" timestamp="1603987788153">
-      <screen x="31" y="0" width="1889" height="1080" />
+    <state x="829" y="295" width="726" height="483" key="MultipleFileMergeDialog" timestamp="1604011231138">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="829" y="295" key="MultipleFileMergeDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011231138" />
     <state x="847" y="295" width="726" height="483" key="MultipleFileMergeDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987788153" />
     <state x="440" y="175" width="1022" height="734" key="SettingsEditor" timestamp="1603997440249">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -413,9 +433,10 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1603988093413">
-      <screen x="31" y="0" width="1889" height="1080" />
+    <state x="479" y="273" width="810" height="540" key="Vcs.Push.Dialog.v2" timestamp="1604011263384">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="479" y="273" width="810" height="540" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011263384" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603988093413" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603976958148" />
     <state x="670" y="453" width="423" height="178" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604010558802">

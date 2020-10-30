@@ -9,7 +9,7 @@ MARKET_DURATION = int(MARKET_ENDS - MARKET_STARTS)
 
 ######################################## Grab & Parse scraped data ###############################################
 
-def requestPsData():
+def requestPsData():        # Must have server up to run this
     import requests, json
     url = 'http://localhost:5003/api/ps-ohlc-outbound'
     x = requests.post(url, data=None)
@@ -19,7 +19,7 @@ def requestPsData():
     return data
 
 
-def fakeRequestPsData():
+def fakeRequestPsData():    # Load a chached response, to test thing without haveing to start server
     with open("fake_ps_API_response.json", "r") as file:
         return  json.load(file)
 
@@ -54,8 +54,7 @@ def ohlcFromPrices(dfPrice, sample='1Min'):
             ('open', 'first'),
             ('high', 'max'),
             ('low', 'min'),
-            ('close', 'last'),
-        ]))
+            ('close', 'last'),]))
     dic = {}
     for key in ['open', 'high', 'low', 'close']:
         dic[key] = df[key].fillna(method='pad').values
@@ -63,7 +62,7 @@ def ohlcFromPrices(dfPrice, sample='1Min'):
     df = pd.DataFrame.from_dict(dic).set_index('index')
     return df
 
-################################################################################################################
+##################################################################################################################
 
 dfPrice, dfVolume = createDFfromOrderBook(
                         parsePsOrder(fakeRequestPsData()['data']))

@@ -1,6 +1,6 @@
 from common import mmap, dump, threading_func_wrapper
 from forFrontend import computeIndicatorsFromSnapShot
-
+import json
 
 class Context:
 
@@ -40,6 +40,12 @@ class Context:
 
     def maybeDumpHistoryToDisk(self):
         dump(self.history)
+
+
+    def chache(self):
+        with open("serverContext.json", "w") as file:
+            json.dump({"lastHistory": self.history[-1],
+                       "psHistory": self.psHistory, "psOrder": self.psOrders}, file)
 
 
 o = Context()
