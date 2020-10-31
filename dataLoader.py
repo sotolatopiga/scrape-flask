@@ -86,14 +86,14 @@ def display_event_bs(div):
     "Build a suitable CustomJS to display the current event in the div model."
     return CustomJS(args=dict(div=div), code=""" 
         let args = [];
-        const foo = (x, plot, doc) => {
+        const foo = (x, plot, doc, root) => {
             // console.clear()
-            console.log([x, plot, doc, doc.roots()[0]]) // temp1[2].get_model_by_name("glypBuyPressure")
+            console.log([x, plot, doc, root]) // temp1[2].get_model_by_name("glypBuyPressure")
             let t = new Date(x.x - 3600 * 1000 * 7)
             
             return (""+t).split(" ").slice(0, -3).join(" ")
         }
-        args.push('Thời gian ' + '= ' + foo(cb_obj, cb_obj.origin, cb_obj.origin.document));
+        args.push('Thời gian ' + '= ' + foo(cb_obj, cb_obj.origin, cb_obj.origin.document, cb_obj.origin.document.roots()[0]));
         args.push('Giá ' + '= ' + Number(cb_obj['y']).toFixed(2));
     
         let line = "<span style='float:left;clear:left;font_size=13px'><b>"+ "</b>" + args.join(", ") + "</span>\\n";
@@ -108,8 +108,7 @@ def hookupFigure(p, display_event=display_event_bs):
     page = column(column(p, div))
     p.js_on_event(events.LODStart, display_event(div))  # Start of LOD display
     p.js_on_event(events.LODEnd, display_event(div))  # End of LOD display
-    ## Events with attributes
-    point_attributes = ['x', 'y']  # Point events
+
     point_events = [events.MouseMove, ]
     for event in point_events:
         p.js_on_event(event, display_event(div))
