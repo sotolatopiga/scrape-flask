@@ -114,19 +114,21 @@ def nnSell(hose):
     return reduce(lambda a, b: a + b, map(sell, hose)) / BILLION
 
 
-def computeIndicators(hose, time):
+def computeIndicatorSingleDataPoint(hose, time):
     dic = {'time': time,
             'buyPressure': buyPressure(hose), 'sellPressure': sellPressure(hose),
            'nnBuy':nnBuy(hose), 'nnSell':nnSell(hose), "totalValue": totalValue(hose),}
     return dic
 
 
-def getIndicators(data):
+def computeIndicators(data):
+    from CONSTANT import compute_i
     def foo(snapShot):
         t  = snapShot['time']
-        time = (t['hour'] * 3600 + 60.0*t['minute'] + t['minute']) / 3600.0
-        indicators = computeIndicators(snapShot['parsed'], time)
+        time = (int(t['hour'] * 3600 + 60.0*t['minute'] + t['minute']))/ 3600
+        indicators = computeIndicatorSingleDataPoint(snapShot['parsed'], time)
         indicators['time'] = time
+        indicators['i'] = compute_i(t['hour'],t['minute'], t['minute'])
         return indicators
     # a = mmap(computeIndicators, da
     # ta['parsed'])

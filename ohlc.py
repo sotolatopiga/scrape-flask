@@ -1,12 +1,19 @@
 import pandas as pd, numpy as np, pickle, json
 from collections import OrderedDict
 from copy import copy
-
-MARKET_START = 9 # MUST edit if not int. e.g 8.45 change date string below
-MARKET_STARTS = int(MARKET_START * 3600)
-MARKET_END = 14.75
-MARKET_ENDS = int(MARKET_END *3600 + 2)
-MARKET_DURATION = int(MARKET_ENDS - MARKET_STARTS)
+from math import pi
+from bokeh.plotting import figure, output_file, show
+from bokeh.models import Span, CrosshairTool, HoverTool, ResetTool, PanTool, WheelZoomTool, ColumnDataSource
+from bokeh.layouts import layout, column, row
+from bokeh.models import Span
+from bokeh import events
+from bokeh.io import output_file, show
+from bokeh.layouts import column, row
+from bokeh.models import Button, CustomJS, Div
+from bokeh.plotting import figure
+from  pandas._libs.tslibs.timestamps import Timestamp
+from pandas import Timedelta
+from CONSTANT import *
 
 ######################################## Grab & Parse scraped data ###############################################
 
@@ -29,28 +36,30 @@ def parsePsOrder(dataPoints):
     def parseDataPoint(dp):
         a = dp.split("\t")
         hour, minute, second = list(map(int, a[0].split(":")))
-        i = hour*3600 + 60*minute + second - MARKET_STARTS
+        i = compute_i(hour, minute, second)
         volume = int(a[1].replace(",", ""))
         price = float(a[2])
         return {'hour': hour,   'minute': minute, 'second': second,
                 'price': price, 'volume': volume, 'i': i}
-    return [dp for dp in list(map(parseDataPoint, dataPoints)) if dp['i'] <= MARKET_DURATION]
+    lst = list(map(parseDataPoint, dataPoints))
+    return [dp for dp in lst if dp['i'] <= MARKET_DURATION], lst[-1]
+
 
 ############################################### Raw => OHLC df ###################################################
 
-def createDFfromOrderBook(psOrders):
+def createDFfromOrderBook(psOrders, DATE):
     prices = [None] * MARKET_DURATION
     volumes = [None] * MARKET_DURATION
     for order in psOrders:
         prices[order['i']] = order['price']
         volumes[order['i']] = order['volume']
-    index = pd.date_range(f'29/10/2020 09:00:00',
+    index = pd.date_range(f'{DATE} 09:00:00',
                           periods=MARKET_DURATION, freq='S')
     return pd.Series(prices, index=index), pd.Series(volumes, index=index)
 
 
-def ohlcFromPrices(dfPrice, sampleSize='1Min'):
-    df = dfPrice.resample(sampleSize).agg(  # series.resample('60s')
+def ohlcFromPrices(priceSeries, volumeSeries, sampleSize='1Min'):
+    resampled = priceSeries.resample(sampleSize).agg(  # series.resample('60s')
         OrderedDict([
             ('open', 'first'),
             ('high', 'max'),
@@ -58,91 +67,147 @@ def ohlcFromPrices(dfPrice, sampleSize='1Min'):
             ('close', 'last'),]))
     dic = {}
     for key in ['open', 'high', 'low', 'close']:
-        dic[key] = df[key].fillna(method='pad').values
-    dic['date'] = list(map(lambda x: x[1], df.index[:len(df['open'])]))
+        dic[key] = resampled[key].fillna(method='pad').values
+    dic['date'] = list(map(lambda x: x[1], resampled.index[:len(resampled['open'])]))
+    dic['vol'] = volumeSeries.resample('1Min').agg(sum).values
     df = pd.DataFrame.from_dict(dic).set_index('date')
-    return df, dic
+    return df, dic, resampled
 
 ##################################################################################################################
 
-dfPrice, dfVolume = createDFfromOrderBook(
-                        parsePsOrder(fakeRequestPsData()['data']))
-df, dic = ohlcFromPrices(dfPrice)
-
-#%%
-
-from math import pi
-
-import pandas as pd
-
-from bokeh.plotting import figure, output_file, show
-from bokeh.sampledata.stocks import MSFT
-
-# df = pd.DataFrame(MSFT)[:50]; df["date"] = pd.to_datetime(df["date"])
-
-inc = df.close > df.open
-dec = df.open > df.close
-w = 12*60*60 # half day in ms
-
-TOOLS = "pan,wheel_zoom,box_zoom,reset,save"
+TOOLS = "pan,box_zoom,reset,save"
 LINE_COLOR = "#111111"
-p = figure(x_axis_type="datetime", tools=TOOLS, plot_width=1600, title = "MSFT Candlestick")
-p.xaxis.major_label_orientation = pi/4
-p.grid.grid_line_alpha=0.3
-df.date = df.index
-p.segment(df.date, df.high, df.date, df.low, color=LINE_COLOR)
-
-p.vbar(df.date[inc], w*1.1, df.open[inc], df.close[inc], fill_color="green", line_color=LINE_COLOR, line_width=0.4)
-p.vbar(df.date[dec], w*1.1, df.open[dec], df.close[dec], fill_color="red", line_color=LINE_COLOR, line_width=0.4)
-
-output_file("candlestick.html", title="candlestick.py example")
-
-show(p)  # open a browser
-
-_dic = copy(dic)
-#%%
-dic = copy(_dic)
-KEYS = ['open', 'high', 'low', 'close', 'date']
-dd ={}
-for key in KEYS: dd[key] = []
-for i in range(0, 150):
-    for key in KEYS:
-        dd[key].append(dic[key][i])
-for i in range(240, 330):
-    for key in KEYS:
-        dd[key].append(dic[key][i])
-
-dic = dd
-df = pd.DataFrame.from_dict(dic)
-inc = df.close > df.open
-dec = df.open > df.close
+TITLE = "MSFT Candlestick"
+CANDLE_WIDTH = 0.45 * 100000                # HARDCODED
+TRIMMED_CANDLE_WIDTH = 0.7                  # HARDCODED
 
 
-TOOLS = "pan,wheel_zoom,box_zoom,reset,save"
-LINE_COLOR = "#111111"
-MID = 150
-CANDLE_WIDTH = 0.7
-
-p = figure(x_axis_type="datetime", tools=TOOLS, plot_width=1600, title = "MSFT Candlestick")
-p.xaxis.major_label_orientation = pi/4
-p.grid.grid_line_alpha=0.3
-
-df.date = df.index
-p.segment(df.date, df.high, df.date, df.low, color=LINE_COLOR)
-p.segment(df.date[150:151], df[150:151], df[150:151]/100, df[150:151]*100, color=LINE_COLOR)
-
-from bokeh.models import Span
-vline1 = Span(location=0 - .5, dimension='height', line_color='black', line_width=1)            # Start of day
-vline2 = Span(location=MID - .5, dimension='height', line_color='blue', line_width=1)           # Lunch break
-vline3 = Span(location=len(df) -1 + .5, dimension='height', line_color='black', line_width=1)   # End of day
-
-p.renderers.extend([vline1, vline2, vline3])
-p.vbar(df.date[inc], CANDLE_WIDTH, df.open[inc], df.close[inc], fill_color="green", line_color=LINE_COLOR, line_width=0.4)
-p.vbar(df.date[dec], CANDLE_WIDTH, df.open[dec], df.close[dec], fill_color="red", line_color=LINE_COLOR, line_width=0.4)
+def plotPsUntrimmed(df):        # Index is time
+    inc = df.close > df.open
+    dec = df.open >= df.close
+    p = figure(x_axis_type="datetime", tools=TOOLS, plot_width=1600, title = TITLE)
+    p.xaxis.major_label_orientation = pi/3
+    p.grid.grid_line_alpha=0.3
+    p.segment(df.index, df.high, df.index, df.low, color=LINE_COLOR)
+    p.vbar(df.index[inc], CANDLE_WIDTH, df.open[inc], df.close[inc], fill_color="green", line_color=LINE_COLOR, line_width=0.4)
+    p.vbar(df.index[dec], CANDLE_WIDTH, df.open[dec], df.close[dec], fill_color="red", line_color=LINE_COLOR, line_width=0.4)
+    wheel_zoom = WheelZoomTool()
+    p.add_tools(wheel_zoom)
+    p.toolbar.active_scroll = wheel_zoom
+    return p
 
 
+def plotPsTrimmed(df):          # Index is rather meaningless 'i'
+    redCandleAlpha = [0] * len(df)
+    for i in range(len(df)):
+        if df.open.values[i] > df.close.values[i]: redCandleAlpha[i] = 1
+    p = figure(x_axis_type="datetime", tools=TOOLS, plot_width=1600, title = "MSFT Candlestick")
+    p.xaxis.major_label_orientation = pi/2
+    p.grid.grid_line_alpha=0.3
+
+    source = ColumnDataSource(dict(
+        x = df.index,
+        open = df.open,
+        high = df.high,
+        low = df.low,
+        close = df.close,
+        vol = df.vol,
+        redCandleAlpha = redCandleAlpha,
+    ))
+
+    p.segment('x', "high", 'x', 'low', source=source, color=LINE_COLOR)
+    p.vbar(x='x', width=TRIMMED_CANDLE_WIDTH, top='open', bottom='close',source=source,
+           fill_color="green", line_color=LINE_COLOR, line_width=0.4)
+    p.vbar('x', TRIMMED_CANDLE_WIDTH, 'open', 'close', source=source, line_width=0.4,
+           fill_color="red", line_color=LINE_COLOR, alpha='redCandleAlpha')
+
+    vline1 = Span(location=0 - .5, dimension='height', line_color='black', line_width=1)            # Start of day
+    vline2 = Span(location=MID - .5, dimension='height', line_color='blue', line_width=1)           # Lunch break
+    vline3 = Span(location=len(df) -1 + .5, dimension='height', line_color='black', line_width=1)   # End of day
+    p.renderers.extend([vline1, vline2, vline3])
+
+    p.add_tools(CrosshairTool(dimensions="both"))
+    wheel_zoom = WheelZoomTool()
+    p.add_tools(wheel_zoom)
+    p.toolbar.active_scroll = wheel_zoom
+    return p
+
+def display_event(div, attributes=[], style = 'float:left;clear:left;font_size=13px'):
+    "Build a suitable CustomJS to display the current event in the div model."
+    return CustomJS(args=dict(div=div), code="""
+        var attrs = %s; 
+        var args = [];
+        const foo = x => {
+            x = parseFloat(x) + 0.5
+            if (x > 150) x += 90
+            x += 9 * 60
+            const y = Math.floor(x/60)
+            x = Math.floor(x) - y *60
+            return  y+ " : " + x
+        }
+        args.push('Thời gian ' + '= ' + foo(Number(cb_obj['x']).toFixed(2)));
+        args.push('Giá ' + '= ' + Number(cb_obj['y']).toFixed(2));
+
+        var line = "<span style=%r><b>"+ "</b>" + args.join(", ") + "</span>\\n";
+        var text = line;
+        var lines = text.split("\\n")
+        if (lines.length > 3)
+            lines.shift();
+        div.text = lines.join("\\n");
+    """ % (attributes, style))
+
+def hookupFigure(p, display_event=display_event):
+    div = Div(width=400, height=p.plot_height, height_policy="fixed")
+    page = column(row(p, div))
+    p.js_on_event(events.LODStart, display_event(div))  # Start of LOD display
+    p.js_on_event(events.LODEnd, display_event(div))  # End of LOD display
+    ## Events with attributes
+    point_attributes = ['x', 'y']  # Point events
+    point_events = [events.MouseMove, ]
+    for event in point_events:
+        p.js_on_event(event, display_event(div, attributes=point_attributes))
+    return page
+
+########################################################################################################################
+
+
+KEYS = ['open', 'high', 'low', 'close', 'date', 'vol']
+def trimDataFrame(dic, KEYS=KEYS):
+    dic = copy(dic)
+    dic['i'] = range(len(dic[KEYS[0]]))
+    dd ={}
+    for key in KEYS: dd[key] = []
+    for i in range(0, MID):
+        for key in KEYS: dd[key].append(dic[key][i])
+    for i in range(AFTERNOON, END):
+        for key in KEYS: dd[key].append(dic[key][i])
+
+    return pd.DataFrame.from_dict(dd)
+
+
+
+data, atc = parsePsOrder(fakeRequestPsData()['data'])
+priceSeries, volumeSeries = createDFfromOrderBook(data, DATE=DATE)
+df, dic, resampled = ohlcFromPrices(priceSeries, volumeSeries)
+ohlcPlot = plotPsTrimmed(trimDataFrame(dic))
+page = hookupFigure(ohlcPlot)
 output_file("candlestick_trimmed.html", title="candlestick.py example")
-show(p)
-#%%
-lst = list(df.index)
-lst
+show(page)
+
+
+#####################################################################################################################
+def experimentTimeDelta(): # This is a valid index for resampling !
+    from pandas._libs.tslibs.timestamps import Timestamp
+    from pandas import Timedelta, Series
+    t = Timestamp('2020-10-29 09:00:00', freq='T')
+    lst = []
+    for i in range(5):
+        lst.append(t)
+        t += Timedelta('1 hour')
+    for i in range(5):
+        lst.append(t)
+        t += Timedelta('2 hour')
+    return Series(range(len(lst)), index=lst) # valid even though interval are irregular
+
+# series = experimentTimeDelta()
+

@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from hoseParser import parseHose, computeIndicators
+from hoseParser import parseHose, computeIndicatorSingleDataPoint
 
 _lastPsData = ""
 
@@ -14,7 +14,7 @@ def handleHoseDataPost(o):
     data = raw['data']
     data = parseHose(data)
     timeStr = timeObj['time'].replace("_", ":", )
-    indicators = computeIndicators(data, timeObj); indicators['hour'] = toHour(raw)
+    indicators = computeIndicatorSingleDataPoint(data, timeObj); indicators['hour'] = toHour(raw)
     print(f"\r#### {len(o.history)} ####", end="")
     return timeObj, timeStr, data, indicators
 
