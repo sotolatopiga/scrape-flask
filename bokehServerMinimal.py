@@ -1,14 +1,7 @@
-from random import random
-
-from bokeh.layouts import column
-from bokeh.models import Button
-from bokeh.palettes import RdYlBu3
-from bokeh.plotting import figure, curdoc
 from bokeh.server.server import Server
 from bokeh.util.browser import view
 from bokeh.application.handlers import FunctionHandler
 from bokeh.application.application import  Application
-from bokehNotebook import createDocument
 
 
 def threading_func_wrapper(func, delay=0.5, args=None, start=True):
@@ -22,24 +15,25 @@ def threading_func_wrapper(func, delay=0.5, args=None, start=True):
 
 
 def attachDocToServer(doc):
-    global _docs
-    doc.add_root(createDocument())
+    global _docs, _page
+    doc.add_root(_page)
     _docs.append(doc)
 
 
 _docs = []
-_dic = {}
+_dic = {'servers':[]}
+from dataLoader import page as _page
 #%%
 BOKEH_PORT = 5008
-if 's' in globals():
-    _dic['server'].io_loop.stop();
-    _dic['server'].stop()
+if len(_dic['servers']) > 0:
+    _dic['servers'][-1].io_loop.stop()
+    _dic['servers'][-1].stop()
 
 s  = Server({'/' : Application(FunctionHandler(attachDocToServer))},
             num_proc=4,
             port=BOKEH_PORT,
             allow_websocket_origin=["*"])
 s.start()
-_dic['server'] = s
+_dic['servers'] += [s]
 view(f"http://localhost:{BOKEH_PORT}")
 threading_func_wrapper(s.io_loop.start, delay=0.001)

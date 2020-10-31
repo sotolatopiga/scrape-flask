@@ -72,16 +72,6 @@ def createIndicatorDF(orders, DATE, MARKET_DURATION=MARKET_DURATION): # TODO: ch
                           periods=MARKET_DURATION, freq='S')
     return pd.Series(b, index=index), pd.Series(s, index=index)
 
-
-if "snapshots" not in globals():
-    snapshots, times, parsed, indicators =  loadData_29()
-    print(len(times))
-
-from ohlc import hookupFigure
-
-#%%#####################################################################################################################
-
-
 def display_event_bs(div):
     "Build a suitable CustomJS to display the current event in the div model."
     return CustomJS(args=dict(div=div), code=""" 
@@ -118,6 +108,10 @@ def hookupFigure(p, display_event=display_event_bs):
     p.toolbar.active_scroll = wheel_zoom
     return page
 
+#%%
+if "snapshots" not in globals():
+    snapshots, times, parsed, indicators =  loadData_29()
+    print(len(times))
 
 buys, sells = createIndicatorDF(indicators, DATE)
 sells = sells.fillna(method='ffill').replace(np.nan, 0)
@@ -135,8 +129,8 @@ p.xaxis.major_label_orientation = pi / 2
 p.grid.grid_line_alpha = 0.3
 
 page = hookupFigure(p, display_event=display_event_bs)
-output_file("Testing.html")
-show(page)
+# output_file("Testing.html")
+# show(page)
 
 
 

@@ -10,11 +10,6 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
     <select>
       <path>
@@ -26,10 +21,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/bokehServerMinimal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bokeh" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bokehNotebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokehNotebook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokehServerMinimal.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokehServerMinimal.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +48,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <branch-grouping />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
@@ -161,7 +155,7 @@
       <workItem from="1604050335752" duration="3364000" />
       <workItem from="1604056958953" duration="28675000" />
       <workItem from="1604090573805" duration="996000" />
-      <workItem from="1604117178115" duration="12801000" />
+      <workItem from="1604117178115" duration="13796000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -324,7 +318,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604128988366</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="1.16.2 Bokeh Server Minimalist Succeeded!">
+      <created>1604131269531</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1604131269531</updated>
+    </task>
+    <task id="LOCAL-00025" summary="1.16.3 Bokeh Server combined with Stock Chart &amp; CustomJS">
+      <created>1604132163259</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1604132163259</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +378,9 @@
     <MESSAGE value="1.15 Can now plot OHLC, next action item is remove (150, 240) &amp; (330 -&gt; inf)" />
     <MESSAGE value="1.16 Buy / Sell Pressure, CustomJS breakThrough" />
     <MESSAGE value="1.16.1 Bokeh Server" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.16.1 Bokeh Server" />
+    <MESSAGE value="1.16.2 Bokeh Server Minimalist Succeeded!" />
+    <MESSAGE value="1.16.3 Bokeh Server combined with Stock Chart &amp; CustomJS" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.16.3 Bokeh Server combined with Stock Chart &amp; CustomJS" />
   </component>
   <component name="WindowStateProjectService">
     <state x="433" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603912517899">
@@ -465,14 +475,14 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604128992595">
+    <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604132175559">
       <screen x="40" y="0" width="1880" height="1080" />
     </state>
     <state x="479" y="273" width="810" height="540" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011263384" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603988093413" />
     <state x="2399" y="273" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604052842700" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1604052501814" />
-    <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604128992595" />
+    <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604132175559" />
     <state x="519" y="198" width="714" height="676" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604060802295">
       <screen x="40" y="0" width="1880" height="1080" />
     </state>
