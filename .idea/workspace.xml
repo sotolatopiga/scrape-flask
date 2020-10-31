@@ -19,17 +19,17 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/bokehServerMinimal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokeh" beforeDir="false" afterPath="$PROJECT_DIR$/bokeh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bokehNotebook.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokehNotebook.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataLoader.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +71,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mufase/ver_1/bserver.py" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -161,7 +161,7 @@
       <workItem from="1604050335752" duration="3364000" />
       <workItem from="1604056958953" duration="28675000" />
       <workItem from="1604090573805" duration="996000" />
-      <workItem from="1604117178115" duration="10518000" />
+      <workItem from="1604117178115" duration="12801000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -317,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604126421199</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="1.16.1 Bokeh Server">
+      <created>1604128988366</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1604128988366</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +341,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -362,7 +369,8 @@
     <MESSAGE value="1.14.1" />
     <MESSAGE value="1.15 Can now plot OHLC, next action item is remove (150, 240) &amp; (330 -&gt; inf)" />
     <MESSAGE value="1.16 Buy / Sell Pressure, CustomJS breakThrough" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.16 Buy / Sell Pressure, CustomJS breakThrough" />
+    <MESSAGE value="1.16.1 Bokeh Server" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.16.1 Bokeh Server" />
   </component>
   <component name="WindowStateProjectService">
     <state x="433" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603912517899">
@@ -388,13 +396,13 @@
     </state>
     <state x="412" y="101" width="1227" height="877" key="DiffContextDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987702568" />
     <state x="412" y="101" width="1227" height="877" key="DiffContextDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603977533080" />
-    <state x="614" y="192" width="424" height="477" key="FileChooserDialogImpl" timestamp="1604128635193">
+    <state x="614" y="192" width="579" height="477" key="FileChooserDialogImpl" timestamp="1604129489935">
       <screen x="40" y="0" width="1880" height="1080" />
     </state>
     <state x="954" y="280" width="494" height="506" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1603997406309" />
     <state x="279" y="330" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1603951647468" />
     <state x="608" y="192" width="444" height="506" key="FileChooserDialogImpl/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1604051711085" />
-    <state x="614" y="192" width="424" height="477" key="FileChooserDialogImpl/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604128635193" />
+    <state x="614" y="192" width="579" height="477" key="FileChooserDialogImpl/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604129489935" />
     <state width="1381" height="328" key="GridCell.Tab.0.bottom" timestamp="1603977549824">
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
@@ -457,14 +465,14 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604126435934">
+    <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604128992595">
       <screen x="40" y="0" width="1880" height="1080" />
     </state>
     <state x="479" y="273" width="810" height="540" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011263384" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603988093413" />
     <state x="2399" y="273" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604052842700" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1604052501814" />
-    <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604126435934" />
+    <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604128992595" />
     <state x="519" y="198" width="714" height="676" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604060802295">
       <screen x="40" y="0" width="1880" height="1080" />
     </state>

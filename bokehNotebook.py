@@ -46,3 +46,5 @@ def createDocument():
     return column(button, p)
 
 curdoc().add_root(createDocument())
+
+# https://demo.bokeh.org/

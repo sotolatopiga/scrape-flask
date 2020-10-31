@@ -1,1 +1,1 @@
-bokeh serve --show --allow-websocket-origin='*' bokehNotebook.py
+bokeh serve  --show --allow-websocket-origin='*' bokehNotebook.py
