@@ -38,31 +38,31 @@ def index():
 # Return hose indicators for charts
 @app.route('/api/hose-indicators-outound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def hose_indicators_outbound():
-    return handleHoseDataGet(o)
+    return handleHoseDataGet(_o)
 
 
 # Return phai sinh OHLC data for charts
 @app.route('/api/ps-ohlc-outbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def ps_ohlc_outbound():
-    return handlePsDataGet(o)
+    return handlePsDataGet(_o)
 
 ########################################### INBOUND INGESTION ################################################
 
 # Ingest phai sinh data
 @app.route('/api/ps-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def ps_snapshot_inbound():
-    return jsonify(handlePsDataPost(o))
+    return jsonify(handlePsDataPost(_o))
 
 
 # Ingest Hose data
 @app.route('/api/hose-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def hose_snapshot_inbound():
-    timeObj, timeStr, data, indicators = handleHoseDataPost(o)
-    indicators['i'] = len(o.history)
-    o.addToHistory({'time': timeObj, 'parsed': data})
-    o.indicators.append(indicators)
+    timeObj, timeStr, data, indicators = handleHoseDataPost(_o)
+    indicators['i'] = len(_o.history)
+    _o.addToHistory({'time': timeObj, 'parsed': data})
+    _o.indicators.append(indicators)
     return jsonify(indicators) # return jsonify(res)
 
 ###############################################################################################################
 
-o = Context()
+_o = Context()
