@@ -14,25 +14,17 @@
     <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:origin/main" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/commonOld.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dbIntegration.py" afterDir="false" />
+    <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="1.17.1 Before Merging all plots and removing lunch_break">
+      <change afterPath="$PROJECT_DIR$/dfManipulations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CONSTANT.py" beforeDir="false" afterPath="$PROJECT_DIR$/CONSTANT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-production.py" beforeDir="false" afterPath="$PROJECT_DIR$/app-production.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bokehServerMinimal.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokehServerMinimal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/candlestick.html" beforeDir="false" afterPath="$PROJECT_DIR$/candlestick.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataLoader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exposed.py" beforeDir="false" afterPath="$PROJECT_DIR$/exposedFlaskServer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forFrontend.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbIntegration.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbIntegration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +170,7 @@
       <workItem from="1604169151349" duration="1337000" />
       <workItem from="1604170500635" duration="168000" />
       <workItem from="1604170681250" duration="13236000" />
-      <workItem from="1604227945816" duration="17657000" />
+      <workItem from="1604227945816" duration="28895000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -362,7 +354,35 @@
       <option name="project" value="LOCAL" />
       <updated>1604132255570</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="1.17.0 Ploted Volumes nicely, overlaping with OHLC next">
+      <created>1604246907655</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1604246907655</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Merge remote-tracking branch 'origin/main' into main&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;bokehServerMinimal.py&#10;#&#9;dataLoader.py">
+      <created>1604246955620</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1604246955620</updated>
+    </task>
+    <task id="LOCAL-00029" summary="1.17.1 Merging all plots">
+      <created>1604250508683</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1604250508683</updated>
+    </task>
+    <task id="LOCAL-00030" summary="1.17.1 Before Merging all plots and removing lunch_break">
+      <created>1604250589451</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1604250589451</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,7 +399,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -410,7 +430,12 @@
     <MESSAGE value="1.16.1 Bokeh Server" />
     <MESSAGE value="1.16.2 Bokeh Server Minimalist Succeeded!" />
     <MESSAGE value="1.16.3 Bokeh Server combined with Stock Chart &amp; CustomJS" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.16.3 Bokeh Server combined with Stock Chart &amp; CustomJS" />
+    <MESSAGE value="1.17.0 Ploted Volumes nicely, overlaping with OHLC next" />
+    <MESSAGE value="1.17.0 Ploted Volumes nicely, overlaping with OHLC next !" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main' into main&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;bokehServerMinimal.py&#10;#&#9;dataLoader.py" />
+    <MESSAGE value="1.17.1 Merging all plots" />
+    <MESSAGE value="1.17.1 Before Merging all plots and removing lunch_break" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.17.1 Before Merging all plots and removing lunch_break" />
   </component>
   <component name="WindowStateProjectService">
     <state x="433" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603912517899">
@@ -497,11 +522,12 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state x="682" y="558" width="713" height="395" key="GridCell.Tab.2.right/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603936460053" />
-    <state x="829" y="295" width="726" height="483" key="MultipleFileMergeDialog" timestamp="1604011231138">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="851" y="295" width="726" height="483" key="MultipleFileMergeDialog" timestamp="1604246938564">
+      <screen x="39" y="0" width="1881" height="1080" />
     </state>
     <state x="829" y="295" key="MultipleFileMergeDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011231138" />
     <state x="847" y="295" width="726" height="483" key="MultipleFileMergeDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603987788153" />
+    <state x="851" y="295" key="MultipleFileMergeDialog/39.0.1881.1080/1920.0.1920.1080@39.0.1881.1080" timestamp="1604246938564" />
     <state x="440" y="175" width="1022" height="734" key="SettingsEditor" timestamp="1603997440249">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -511,13 +537,14 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604132175559">
-      <screen x="40" y="0" width="1880" height="1080" />
+    <state x="508" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604246958635">
+      <screen x="39" y="0" width="1881" height="1080" />
     </state>
     <state x="479" y="273" width="810" height="540" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011263384" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603988093413" />
     <state x="2399" y="273" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604052842700" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1604052501814" />
+    <state x="508" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/39.0.1881.1080/1920.0.1920.1080@39.0.1881.1080" timestamp="1604246958635" />
     <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604132175559" />
     <state x="718" y="191" width="287" height="683" key="VcsDiffUtil.ChangesDialog" timestamp="1604133872633">
       <screen x="40" y="0" width="1880" height="1080" />
@@ -527,11 +554,11 @@
       <screen x="40" y="0" width="1880" height="1080" />
     </state>
     <state x="519" y="198" width="714" height="676" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604060802295" />
-    <state x="695" y="453" width="441" height="178" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604233159688">
+    <state x="695" y="453" width="441" height="178" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604248714408">
       <screen x="39" y="0" width="1881" height="1080" />
     </state>
     <state x="670" y="453" width="423" height="178" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604010558802" />
-    <state x="695" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/39.0.1881.1080/1920.0.1920.1080@39.0.1881.1080" timestamp="1604233159688" />
+    <state x="695" y="453" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/39.0.1881.1080/1920.0.1920.1080@39.0.1881.1080" timestamp="1604248714408" />
     <state x="696" y="453" width="441" height="178" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604065011100" />
     <state x="682" y="558" width="713" height="418" key="dock-window-1" timestamp="1603936487606">
       <screen x="31" y="0" width="1889" height="1080" />
