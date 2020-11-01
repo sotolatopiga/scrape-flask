@@ -30,6 +30,19 @@ def getRawIndicatorsFromDB(db_name="test1", collection_name="indicators"):
     return df
 
 
+def getIndicatorDF():
+    idf = getRawIndicatorsFromDB()  # idf.keys =  ['seconds', 'indicators', 'stamp']
+
+    idf['timeStamp'] = copy(idf['stamp'])
+    idf = idf.set_index('stamp')
+
+    INDICATOR_KEYS = ['time', 'buyPressure', 'sellPressure', 'nnBuy', 'nnSell', 'totalValue', 'i']
+    # ['seconds', 'indicators', 'timeStamp', 'time', 'buyPressure','sellPressure', 'nnBuy', 'nnSell', 'totalValue', 'i']
+    for key in INDICATOR_KEYS:
+        idf[key] = idf['indicators'].map(lambda x: x[key])
+    return idf
+
+
 def timeStr2Time(dp, second=True, hour=False, normalize = True):
     assert second or hour, "dbIntegration assertion error: must choose either second or hour"
     h, m, s = list(map(int, dp['time'].split('_')))
@@ -67,22 +80,6 @@ def dumpIndicatorsToDB(dataObject):
     tok()
 
 
-_client = MongoClient( DB_URI)
-
-#%%
-idf = getRawIndicatorsFromDB()  # idf.keys =  ['seconds', 'indicators', 'stamp']
-
-
-idf['timeStamp'] = copy(idf['stamp'])
-idf = idf.set_index('stamp')
-
-INDICATOR_KEYS = ['time', 'buyPressure', 'sellPressure', 'nnBuy', 'nnSell', 'totalValue', 'i']
-# ['seconds', 'indicators', 'timeStamp', 'time', 'buyPressure','sellPressure', 'nnBuy', 'nnSell', 'totalValue', 'i']
-for key in INDICATOR_KEYS:
-    idf[key] = idf['indicators'].map(lambda x: x[key])
-
-
-
 def createVolumePlot(source):
     pVolume = Figure(width=PLOT_WIDTH, height=VOLUME_PLOT_HEIGHT,  tools="pan, reset" )
     pVolume.toolbar.logo = None
@@ -117,6 +114,11 @@ def hookUpPlots(pVolume, pBuySell, crosshairTool):
     pBuySell.add_tools(crosshairTool)
 
 ########################################################################################################################
+
+
+
+_client = MongoClient( DB_URI)
+idf = getIndicatorDF()
 
 dfVolume = filterOutNonTradingTime(computeMinuteData(idf, ['totalValue', 'nnBuy', 'nnSell']))
 sourceVolume = createColumnDataSource(dfVolume)

@@ -21,9 +21,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="1.17.1 Before Merging all plots and removing lunch_break">
-      <change afterPath="$PROJECT_DIR$/dfManipulations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataLoader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dbIntegration.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbIntegration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +167,7 @@
       <workItem from="1604169151349" duration="1337000" />
       <workItem from="1604170500635" duration="168000" />
       <workItem from="1604170681250" duration="13236000" />
-      <workItem from="1604227945816" duration="28895000" />
+      <workItem from="1604227945816" duration="29059000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -382,7 +379,21 @@
       <option name="project" value="LOCAL" />
       <updated>1604250589451</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="1.17.1 Before Merging all plots and removing lunch_break">
+      <created>1604258232099</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1604258232099</updated>
+    </task>
+    <task id="LOCAL-00032" summary="1.17.1 Before Merging all plots and removing lunch_break">
+      <created>1604258292218</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1604258292218</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,14 +548,14 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="508" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604246958635">
+    <state x="508" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604258237721">
       <screen x="39" y="0" width="1881" height="1080" />
     </state>
     <state x="479" y="273" width="810" height="540" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011263384" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603988093413" />
     <state x="2399" y="273" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1604052842700" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1604052501814" />
-    <state x="508" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/39.0.1881.1080/1920.0.1920.1080@39.0.1881.1080" timestamp="1604246958635" />
+    <state x="508" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/39.0.1881.1080/1920.0.1920.1080@39.0.1881.1080" timestamp="1604258237721" />
     <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604132175559" />
     <state x="718" y="191" width="287" height="683" key="VcsDiffUtil.ChangesDialog" timestamp="1604133872633">
       <screen x="40" y="0" width="1880" height="1080" />
