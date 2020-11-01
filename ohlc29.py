@@ -2,20 +2,26 @@ import pandas as pd, numpy as np, pickle, json
 from collections import OrderedDict
 from copy import copy
 from math import pi
-from bokeh.plotting import figure, output_file, show
 from bokeh.models import Span, CrosshairTool, HoverTool, ResetTool, PanTool, WheelZoomTool, ColumnDataSource
-from bokeh.layouts import layout, column, row
 from bokeh.models import Span
 from bokeh import events
 from bokeh.io import output_file, show
 from bokeh.layouts import column, row
 from bokeh.models import Button, CustomJS, Div
 from bokeh.plotting import figure
-from  pandas._libs.tslibs.timestamps import Timestamp
-from pandas import Timedelta
 from CONSTANT import *
+from dfManipulations import filterOutNonTradingTime, createColumnDataSource
 
 ######################################## Grab & Parse scraped data ###############################################
+
+OHLC_TOOLS = "pan,box_zoom,reset,save"
+OHLC_LINE_COLOR = "#111111"
+OHLC_TITLE = "VN30F1M Candlestick"
+OHLC_PLOT_WIDTH = 1400
+OHLC_PLOT_HEIGHT = 400
+OHLC_CANDLE_WIDTH = 0.45 * 100000                # HARDCODED
+OHLC_TRIMMED_CANDLE_WIDTH = 0.7                # HARDCODED
+OHLC_KEYS = ['open', 'high', 'low', 'close', 'date', 'vol']
 
 def requestPsData():        # Must have server up to run this
     import requests, json
@@ -42,21 +48,10 @@ def parsePsOrder(dataPoints):
         return {'hour': hour,   'minute': minute, 'second': second,
                 'price': price, 'volume': volume, 'i': i}
     lst = list(map(parseDataPoint, dataPoints))
-    return [dp for dp in lst if dp['i'] <= MARKET_DURATION], lst[-1]
+    return lst[:-1], lst[-1]
 
 
 ############################################### Raw => OHLC df ###################################################
-
-def createDFfromOrderBook(psOrders, DATE):
-    prices = [None] * MARKET_DURATION
-    volumes = [None] * MARKET_DURATION
-    for order in psOrders:
-        prices[order['i']] = order['price']
-        volumes[order['i']] = order['volume']
-    index = pd.date_range(f'{DATE} 09:00:00',
-                          periods=MARKET_DURATION, freq='S')
-    return pd.Series(prices, index=index), pd.Series(volumes, index=index)
-
 
 def ohlcFromPrices(priceSeries, volumeSeries, sampleSize='1Min'):
     resampled = priceSeries.resample(sampleSize).agg(  # series.resample('60s')
@@ -75,15 +70,6 @@ def ohlcFromPrices(priceSeries, volumeSeries, sampleSize='1Min'):
 
 ##################################################################################################################
 
-OHLC_TOOLS = "pan,box_zoom,reset,save"
-OHLC_LINE_COLOR = "#111111"
-OHLC_TITLE = "VN30F1M Candlestick"
-OHLC_PLOT_WIDTH = 1500
-OHLC_PLOT_HEIGHT = 400
-OHLC_CANDLE_WIDTH = 0.45 * 100000                # HARDCODED
-OHLC_TRIMMED_CANDLE_WIDTH = 0.7                  # HARDCODED
-OHLC_KEYS = ['open', 'high', 'low', 'close', 'date', 'vol']
-
 def plotPsUntrimmed(df):        # Index is time
     inc = df.close > df.open
     dec = df.open >= df.close
@@ -99,37 +85,29 @@ def plotPsUntrimmed(df):        # Index is time
     return p
 
 
-def plotPsTrimmed(df):          # Index is rather meaningless 'i'
+def plotPsTrimmed(df, OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):          # Index is rather meaningless 'i'
     redCandleAlpha = [0] * len(df)
     for i in range(len(df)):
         if df.open.values[i] > df.close.values[i]: redCandleAlpha[i] = 1
-    p = figure(x_axis_type="datetime", tools=OHLC_TOOLS,
+    df['redCandleAlpha'] = redCandleAlpha
+    source = createColumnDataSource(df)
+    p = figure(tools=OHLC_TOOLS,
                plot_width=OHLC_PLOT_WIDTH,
                plot_height=OHLC_PLOT_HEIGHT,
                title ="VN301M Candlestick")
-    p.xaxis.major_label_orientation = pi/2
-    p.grid.grid_line_alpha=0.3
+    # p.xaxis.major_label_orientation = pi/2
+    # p.grid.grid_line_alpha=0.3
 
-    source = ColumnDataSource(dict(
-        x = df.index,
-        open = df.open,
-        high = df.high,
-        low = df.low,
-        close = df.close,
-        vol = df.vol,
-        redCandleAlpha = redCandleAlpha,
-    ))
-
-    p.segment('x', "high", 'x', 'low', source=source, color=OHLC_LINE_COLOR)
-    p.vbar(x='x', width=OHLC_TRIMMED_CANDLE_WIDTH, top='open', bottom='close', source=source,
+    p.segment('index', "high", 'index', 'low', source=source, color=OHLC_LINE_COLOR)
+    p.vbar(x='index', width=OHLC_TRIMMED_CANDLE_WIDTH/60, top='open', bottom='close', source=source,
            fill_color="green", line_color=OHLC_LINE_COLOR, line_width=0.4)
-    p.vbar('x', OHLC_TRIMMED_CANDLE_WIDTH, 'open', 'close', source=source, line_width=0.4,
+    p.vbar('index', OHLC_TRIMMED_CANDLE_WIDTH/60, 'open', 'close', source=source, line_width=0.4,
            fill_color="red", line_color=OHLC_LINE_COLOR, alpha='redCandleAlpha')
 
-    vline1 = Span(location=0 - .5, dimension='height', line_color='black', line_width=1)            # Start of day
-    vline2 = Span(location=MID - .5, dimension='height', line_color='blue', line_width=1)           # Lunch break
-    vline3 = Span(location=len(df) -1 + .5, dimension='height', line_color='black', line_width=1)   # End of day
-    p.renderers.extend([vline1, vline2, vline3])
+    # vline1 = Span(location=0 - .5, dimension='height', line_color='black', line_width=1)            # Start of day
+    # vline2 = Span(location=MID - .5, dimension='height', line_color='blue', line_width=1)           # Lunch break
+    # vline3 = Span(location=len(df) -1 + .5, dimension='height', line_color='black', line_width=1)   # End of day
+    # p.renderers.extend([vline1, vline2, vline3])
 
     p.add_tools(CrosshairTool(dimensions="both"))
     wheel_zoom = WheelZoomTool()
@@ -202,15 +180,51 @@ def experimentTimeDelta(): # This is a valid index for resampling !
         t += Timedelta('2 hour')
     return Series(range(len(lst)), index=lst) # valid even though interval are irregular
 
-# series = experimentTimeDelta()
-def genOHCLpage():
-    data, atc = parsePsOrder(fakeRequestPsData()['data'])
-    priceSeries, volumeSeries = createDFfromOrderBook(data, DATE=DATE)
-    df, dic, resampled = ohlcFromPrices(priceSeries, volumeSeries)
-    ohlcPlot = plotPsTrimmed(trimDataFrame(dic))
-    p, div = hookupFigure(ohlcPlot)
-    return p, div
 
 # p, div = genOHCLpage()
 # output_file("candlestick_trimmed.html", title="candlestick.py example")
 # show(column(p, div))
+
+def createDFfromOrderBook(psOrders, DATE):
+    index = pd.date_range(f'{DATE} 09:00:00', f'{DATE} 14:45:59', freq='S')
+    prices = [None] * len(index)
+    volumes = [None] * len(index)
+    for order in psOrders:
+        i = (order["hour"] - 9) * 3600 + order["minute"] * 60 + order["second"]  # MARKETHOUR
+        prices[i] = order['price']
+        volumes[i] = order['volume']
+
+    return pd.Series(prices, index=index), pd.Series(volumes, index=index)
+
+def genOHCLpage(OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):
+    rawData, atc = parsePsOrder(fakeRequestPsData()['data'])
+    priceSeries, volumeSeries = createDFfromOrderBook(rawData, DATE)
+    df, dic, resampled = ohlcFromPrices(priceSeries, volumeSeries)
+    df = filterOutNonTradingTime(pd.DataFrame(dic).set_index("date"))
+    ohlcPlot = plotPsTrimmed(df,OHLC_PLOT_HEIGHT)  # This df is untrimed
+    # ohlcPlot = plotPsTrimmed(trimDataFrame(dic))
+    p, div = hookupFigure(ohlcPlot)
+
+    return p, div
+
+
+
+# output_file("/tmp/foo.html")
+# show(column(p, div))
+
+
+# https://stackoverflow.com/questions/37173230/how-do-i-use-custom-labels-for-ticks-in-bokeh
+"""
+from bokeh.io import output_file, show
+from bokeh.plotting import figure
+
+p = figure()
+p.circle(x=[1,2,3], y=[4,6,5], size=20)
+
+p.xaxis.ticker = [1, 1.2, 3]
+p.xaxis.major_label_overrides = {1: 'vcl', 1.2: 'B', 3: 'C'}
+
+output_file("test.html")
+
+show(p)
+"""

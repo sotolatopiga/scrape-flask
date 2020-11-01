@@ -108,7 +108,7 @@ def hookupFigure(p, display_event=display_event_bs):
     p.js_on_event(events.LODStart, display_event(div))  # Start of LOD display
     p.js_on_event(events.LODEnd, display_event(div))  # End of LOD display
 
-    point_events = [events.MouseMove, ]
+    point_events = [events.MouseMove,]
     for event in point_events:
         p.js_on_event(event, display_event(div))
 
