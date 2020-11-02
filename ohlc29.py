@@ -16,7 +16,7 @@ from dfManipulations import filterOutNonTradingTime, createColumnDataSource
 
 OHLC_TOOLS = "pan,box_zoom,reset,save"
 OHLC_LINE_COLOR = "#111111"
-OHLC_TITLE = "VN30F1M Candlestick"
+OHLC_TITLE = "Hợp đồng tương lai chỉ số VN30 Index (1 tháng)"
 OHLC_PLOT_WIDTH = 1400
 OHLC_PLOT_HEIGHT = 400
 OHLC_CANDLE_WIDTH = 0.45 * 100000                # HARDCODED
@@ -94,7 +94,7 @@ def plotPsTrimmed(df, OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):          # Index is ra
     p = figure(tools=OHLC_TOOLS,
                plot_width=OHLC_PLOT_WIDTH,
                plot_height=OHLC_PLOT_HEIGHT,
-               title ="VN301M Candlestick")
+               title = OHLC_TITLE)
     # p.xaxis.major_label_orientation = pi/2
     # p.grid.grid_line_alpha=0.3
 
@@ -118,26 +118,22 @@ def plotPsTrimmed(df, OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):          # Index is ra
 def display_event(div, attributes=[], style = 'float:left;clear:left;font_size=13px'):
     "Build a suitable CustomJS to display the current event in the div model."
     return CustomJS(args=dict(div=div), code="""
-        var attrs = %s; 
+        var attrs = ['x', 'y']; 
         var args = [];
         const foo = x => {
-            x = parseFloat(x) + 0.5
-            if (x > 150) x += 90
-            x += 9 * 60
-            const y = Math.floor(x/60)
-            x = Math.floor(x) - y *60
-            return  y+ " : " + x
+          
+            return Math.floor(x) + ":" + Math.floor(parseFloat(x) * 60) % 60
         }
         args.push('Thời gian ' + '= ' + foo(Number(cb_obj['x']).toFixed(2)));
         args.push('Giá ' + '= ' + Number(cb_obj['y']).toFixed(2));
 
-        var line = "<span style=%r><b>"+ "</b>" + args.join(", ") + "</span>\\n";
+        var line = "<span style=float:left;clear:left;font_size=13px><b>"+ "</b>" + args.join(", ") + "</span>\\n";
         var text = line;
         var lines = text.split("\\n")
         if (lines.length > 3)
             lines.shift();
         div.text = lines.join("\\n");
-    """ % (attributes, style))
+    """)
 
 def hookupFigure(p, display_event=display_event):
     div = Div(width=400, height=p.plot_height, height_policy="fixed")

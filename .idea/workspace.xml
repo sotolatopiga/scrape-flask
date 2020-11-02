@@ -20,7 +20,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="1.17.1 Before Merging all plots and removing lunch_break" />
+    <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="1.17.1 Before Merging all plots and removing lunch_break">
+      <change afterPath="$PROJECT_DIR$/DB_CONSTANTS.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/masterPlot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app-production.py" beforeDir="false" afterPath="$PROJECT_DIR$/app-production.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataLoader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbIntegration.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbIntegration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ohlc29.py" beforeDir="false" afterPath="$PROJECT_DIR$/ohlc29.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requestHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/requestHandler.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,7 +176,8 @@
       <workItem from="1604169151349" duration="1337000" />
       <workItem from="1604170500635" duration="168000" />
       <workItem from="1604170681250" duration="13236000" />
-      <workItem from="1604227945816" duration="38361000" />
+      <workItem from="1604227945816" duration="42017000" />
+      <workItem from="1604273919913" duration="3834000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -405,7 +417,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604267517879</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="1.17.1 Before Merging all plots and removing lunch_break">
+      <created>1604268320745</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1604268320745</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,11 +493,12 @@
     </state>
     <state x="919" y="378" width="556" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1603997416891" />
     <state x="935" y="378" width="525" height="316" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603870575962" />
-    <state x="149" y="324" width="1483" height="400" key="#xdebugger.XInspectDialog" timestamp="1604011786249">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="185" y="324" width="833" height="645" key="#xdebugger.XInspectDialog" timestamp="1604276185559">
+      <screen x="39" y="0" width="1881" height="1080" />
     </state>
     <state x="149" y="324" key="#xdebugger.XInspectDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011786249" />
     <state x="178" y="324" width="1483" height="400" key="#xdebugger.XInspectDialog/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603985439861" />
+    <state x="185" y="324" width="833" height="645" key="#xdebugger.XInspectDialog/39.0.1881.1080/1920.0.1920.1080@39.0.1881.1080" timestamp="1604276185559" />
     <state x="419" y="101" width="1222" height="877" key="DiffContextDialog" timestamp="1604134006243">
       <screen x="40" y="0" width="1880" height="1080" />
     </state>
