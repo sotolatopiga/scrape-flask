@@ -19,7 +19,7 @@ def handleHoseDataPost(o):
     return timeObj, timeStr, data, indicators
 
 
-def handlePsDataPost(o):
+def OLD_HandlePsDataPost(o):
     global _lastPsData
     data = request.get_json()
     noUpdate = data['data'] == _lastPsData
@@ -30,17 +30,16 @@ def handlePsDataPost(o):
         o.psHistory.append(data['data'])
     hour = toHour(data)
     return {'psHistory': len(o.psHistory),
-            'psOrder' : len(o.psOrders),
             'msg': "from /api/ps-snapshot-inbound",  }
 
 
 def handlePsDataGet(o):
-    return jsonify({'msg': "from /api/ps-ohlc-outbound", 'data': o.psOrders})
+    return jsonify(o.psHistory)
 
 
 def handleHoseDataGet(o):
     o.maybeUpdatedicators()
-    return jsonify({'data': o.indicators, 'msg': "from /api/hose-indicators-outbound"})
+    return jsonify(o.indicators)
 
 
 #################################################################################################################

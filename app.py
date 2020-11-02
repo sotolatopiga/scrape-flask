@@ -5,12 +5,14 @@ from common import mmap, dump, threading_func_wrapper
 from Context import Context
 import json, pickle
 from werkzeug.serving import run_simple
-from requestHandler import handleHoseDataPost, handlePsDataPost, handlePsDataGet, handleHoseDataGet
+from requestHandler import handleHoseDataPost, OLD_HandlePsDataPost, handlePsDataGet, handleHoseDataGet
+from DB_CONSTANTS import db
+
 
 app = Flask(__name__)
 CORS(app)
 
-############################################# STATIC HTML PAGES ##################################$###########
+############################################# STATIC HTML PAGES ###################################################
 
 def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
@@ -36,7 +38,7 @@ def index():
 ########################################## OUTBOUND DATA SERVICES ###########################################
 
 # Return hose indicators for charts
-@app.route('/api/hose-indicators-outound', methods=['GET', 'POST', 'DELETE', 'PUT'])
+@app.route('/api/hose-indicators-outbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def hose_indicators_outbound():
     return handleHoseDataGet(_o)
 
@@ -49,9 +51,17 @@ def ps_ohlc_outbound():
 ########################################### INBOUND INGESTION ################################################
 
 # Ingest phai sinh data
-@app.route('/api/ps-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
-def ps_snapshot_inbound():
-    return jsonify(handlePsDataPost(_o))
+@app.route('/api/old-ps-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
+def OLD_ps_snapshot_inbound():
+    return jsonify(OLD_HandlePsDataPost(_o))
+
+
+@app.route('/api/ps-orders-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
+def ps_orders_inbound():
+    orders, marketDepth = request.get_json()
+    if len(_o.psHistory) < len(orders):
+        _o.psHistory = list(reversed(orders))
+    return {"msg":f"got {len(orders)} datapoints for ps Order & {len(marketDepth[0])} for marketDepth"}
 
 
 # Ingest Hose data

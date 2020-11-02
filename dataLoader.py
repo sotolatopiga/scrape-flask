@@ -69,19 +69,6 @@ def cacheDataToDisk():
         json.dump({key:_o._dic[key] for key in CACHED}, file)
 
 
-def createIndicatorDF(orders, DATE, MARKET_DURATION=MARKET_DURATION): # TODO: change Date to 1 of
-    b = [None] * MARKET_DURATION         # TODO: Merge this with the orther CreateDF...
-    s = [None] * MARKET_DURATION
-    for order in orders:
-        if order['i'] < MARKET_DURATION:
-            b[order['i']] = order['buyPressure']
-            s[order['i']] = order['sellPressure']
-
-    index = pd.date_range(f'{DATE} 09:00:00',
-                            periods=MARKET_DURATION, freq='S')
-    return pd.Series(b, index=index), pd.Series(s, index=index)
-
-
 def display_event_bs(div):
     return CustomJS(args=dict(div=div), code=""" 
         let args = [];

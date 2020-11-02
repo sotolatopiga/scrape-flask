@@ -5,7 +5,7 @@ from common import mmap, dump, threading_func_wrapper
 from Context import Context
 import json, pickle
 from werkzeug.serving import run_simple
-from requestHandler import handleHoseDataPost, handlePsDataPost, handlePsDataGet, handleHoseDataGet
+from requestHandler import handleHoseDataPost, OLD_HandlePsDataPost, handlePsDataGet, handleHoseDataGet
 
 app = Flask(__name__)
 CORS(app)
@@ -51,7 +51,7 @@ def ps_ohlc_outbound():
 # Ingest phai sinh data
 @app.route('/api/ps-snapshot-inbound', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def ps_snapshot_inbound():
-    return jsonify(handlePsDataPost(_o))
+    return jsonify(OLD_HandlePsDataPost(_o))
 
 
 # Ingest Hose data
