@@ -87,6 +87,8 @@ def plotPsUntrimmed(df):        # Index is time
 
 def plotPsTrimmed(df, OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):          # Index is rather meaningless 'i'
     redCandleAlpha = [0] * len(df)
+    print(df)
+    print(len(df))
     for i in range(len(df)):
         if df.open.values[i] > df.close.values[i]: redCandleAlpha[i] = 1
     df['redCandleAlpha'] = redCandleAlpha
@@ -94,15 +96,16 @@ def plotPsTrimmed(df, OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):          # Index is ra
     p = figure(tools=OHLC_TOOLS,
                plot_width=OHLC_PLOT_WIDTH,
                plot_height=OHLC_PLOT_HEIGHT,
-               title = OHLC_TITLE)
+               title = OHLC_TITLE,
+               name = "pltOHLC")
     # p.xaxis.major_label_orientation = pi/2
     # p.grid.grid_line_alpha=0.3
 
-    p.segment('index', "high", 'index', 'low', source=source, color=OHLC_LINE_COLOR)
+    p.segment('index', "high", 'index', 'low', source=source, color=OHLC_LINE_COLOR, name="glyphOHLCSegment")
     p.vbar(x='index', width=OHLC_TRIMMED_CANDLE_WIDTH/60, top='open', bottom='close', source=source,
-           fill_color="green", line_color=OHLC_LINE_COLOR, line_width=0.4)
+           fill_color="green", line_color=OHLC_LINE_COLOR, line_width=0.4, name="glyphOHLCGreen")
     p.vbar('index', OHLC_TRIMMED_CANDLE_WIDTH/60, 'open', 'close', source=source, line_width=0.4,
-           fill_color="red", line_color=OHLC_LINE_COLOR, alpha='redCandleAlpha')
+           fill_color="red", line_color=OHLC_LINE_COLOR, alpha='redCandleAlpha', name="glyphOHLCRed" )
 
     # vline1 = Span(location=0 - .5, dimension='height', line_color='black', line_width=1)            # Start of day
     # vline2 = Span(location=MID - .5, dimension='height', line_color='blue', line_width=1)           # Lunch break
@@ -136,7 +139,7 @@ def display_event(div, attributes=[], style = 'float:left;clear:left;font_size=1
     """)
 
 def hookupFigure(p, display_event=display_event):
-    div = Div(width=400, height=p.plot_height, height_policy="fixed")
+    div = Div(width=400, height=100, height_policy="fixed", name="divCustomJS")
     p.js_on_event(events.LODStart, display_event(div))  # Start of LOD display
     p.js_on_event(events.LODEnd, display_event(div))  # End of LOD display
     ## Events with attributes
@@ -146,81 +149,36 @@ def hookupFigure(p, display_event=display_event):
         p.js_on_event(event, display_event(div, attributes=point_attributes))
     return p, div
 
-########################################################################################################################
-
-
-def trimDataFrame(dic, KEYS=OHLC_KEYS):
-    dic = copy(dic)
-    dic['i'] = range(len(dic[KEYS[0]]))
-    dd ={}
-    for key in KEYS: dd[key] = []
-    for i in range(0, MID):
-        for key in KEYS: dd[key].append(dic[key][i])
-    for i in range(AFTERNOON, END):
-        for key in KEYS: dd[key].append(dic[key][i])
-
-    return pd.DataFrame.from_dict(dd)
-
-
-#####################################################################################################################
-def experimentTimeDelta(): # This is a valid index for resampling !
-    from pandas._libs.tslibs.timestamps import Timestamp
-    from pandas import Timedelta, Series
-    t = Timestamp('2020-10-29 09:00:00', freq='T')
-    lst = []
-    for i in range(5):
-        lst.append(t)
-        t += Timedelta('1 hour')
-    for i in range(5):
-        lst.append(t)
-        t += Timedelta('2 hour')
-    return Series(range(len(lst)), index=lst) # valid even though interval are irregular
-
 
 # p, div = genOHCLpage()
 # output_file("candlestick_trimmed.html", title="candlestick.py example")
 # show(column(p, div))
 
-def createDFfromOrderBook(psOrders, DATE):
+def  createDFfromOrderBook(psOrders, DATE):
     index = pd.date_range(f'{DATE} 09:00:00', f'{DATE} 14:45:59', freq='S')
     prices = [None] * len(index)
     volumes = [None] * len(index)
+    last = -1
     for order in psOrders:
         i = (order["hour"] - 9) * 3600 + order["minute"] * 60 + order["second"]  # MARKETHOUR
+        if last < i: last = i
         prices[i] = order['price']
         volumes[i] = order['volume']
 
-    return pd.Series(prices, index=index), pd.Series(volumes, index=index)
+    return pd.Series(prices[:last], index=index[:last]), pd.Series(volumes[:last], index=index[:last])
 
 def genOHCLpage(OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):
-    rawData, atc = parsePsOrder(fakeRequestPsData()['data'])
-    priceSeries, volumeSeries = createDFfromOrderBook(rawData, DATE)
+    import urllib.request, json
+    with urllib.request.urlopen("http://localhost:5001/ps-pressure-out") as url:
+        data = json.loads(url.read().decode())  # ['orders', 'psPressure']
+
+    rawData = data
+    priceSeries, volumeSeries = createDFfromOrderBook(rawData['orders'], DATE)
     df, dic, resampled = ohlcFromPrices(priceSeries, volumeSeries)
-    df = filterOutNonTradingTime(pd.DataFrame(dic).set_index("date"))
-    ohlcPlot = plotPsTrimmed(df,OHLC_PLOT_HEIGHT)  # This df is untrimed
-    # ohlcPlot = plotPsTrimmed(trimDataFrame(dic))
+    df = filterOutNonTradingTime(pd.DataFrame(dic).set_index("date"), num=len(data))
+    df = filterOutNonTradingTime(pd.DataFrame(dic).set_index("date"), num=len(data))
+    ohlcPlot = plotPsTrimmed(df, OHLC_PLOT_HEIGHT)  # This df is untrimed
+
     p, div = hookupFigure(ohlcPlot)
-
+    #show(column(p, div))
     return p, div
-
-
-
-# output_file("/tmp/foo.html")
-# show(column(p, div))
-
-
-# https://stackoverflow.com/questions/37173230/how-do-i-use-custom-labels-for-ticks-in-bokeh
-"""
-from bokeh.io import output_file, show
-from bokeh.plotting import figure
-
-p = figure()
-p.circle(x=[1,2,3], y=[4,6,5], size=20)
-
-p.xaxis.ticker = [1, 1.2, 3]
-p.xaxis.major_label_overrides = {1: 'vcl', 1.2: 'B', 3: 'C'}
-
-output_file("test.html")
-
-show(p)
-"""

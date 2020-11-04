@@ -21,10 +21,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="1.17.1 Before Merging all plots and removing lunch_break">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONSTANT.py" beforeDir="false" afterPath="$PROJECT_DIR$/CONSTANT.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DB_CONSTANTS.py" beforeDir="false" afterPath="$PROJECT_DIR$/DB_CONSTANTS.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bokehServerMinimal.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokehServerMinimal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataLoader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dfManipulations.py" beforeDir="false" afterPath="$PROJECT_DIR$/dfManipulations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/masterPlot.py" beforeDir="false" afterPath="$PROJECT_DIR$/masterPlot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ohlc29.py" beforeDir="false" afterPath="$PROJECT_DIR$/ohlc29.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scratch.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +79,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mufase" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -172,6 +177,7 @@
       <workItem from="1604170681250" duration="13236000" />
       <workItem from="1604227945816" duration="42017000" />
       <workItem from="1604273919913" duration="5337000" />
+      <workItem from="1604458027428" duration="97000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>

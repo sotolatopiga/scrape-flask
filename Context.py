@@ -41,6 +41,16 @@ class Context:
     def maybeDumpHistoryToDisk(self):
         dump(self.history)
 
+    def saveToDisk(self):
+        import pickle
+        n = len(self.history)
+        if n == 0: return
+
+        lastWrite = self.history[-1]
+        fn = '-'.join("_o_File", lastWrite['time']['time'])
+        with open(f"{fn}.pickle", "wb") as file:
+            pickle.dump(self.history, file)
+
 
     def chache(self):
         with open("serverContext.json", "w") as file:

@@ -48,7 +48,7 @@ def loadData_29():
     return hoseSnapshots, timeSnapshotTaken, parsed, indicators
 
 
-def convertToStream(snapshots, times):
+def convertToStream(snapshots, times, writeToFile=True):
     import pickle , dictdiffer
     lst = []
 
@@ -57,9 +57,17 @@ def convertToStream(snapshots, times):
         lst.append({
             'time': times[i],
             'delta': list(dictdiffer.diff(snapshots[i], snapshots[i - 1]))})
+    stream = {"start": snapshots[0], "steps":lst}
 
-    with open("HOSE-stream.pickle", "wb") as file:
-        pickle.dump({"start": snapshots[0], "steps":lst}, file)
+    if writeToFile:
+        from datetime import datetime
+        n = datetime.now()
+        st =f"""-{n.year}_{n.month}_{n.day}_"""
+        fn = f"HOSE-stream{st}.pickle", "wb"
+        print(fn)
+        with open(fn) as file:
+            pickle.dump(stream, file)
+    return stream
 
 
 def cacheDataToDisk():
