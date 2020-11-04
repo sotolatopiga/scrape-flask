@@ -21,15 +21,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced1c8b1-b632-42dd-b1c7-80cf3cdab056" name="Default Changelist" comment="1.17.1 Before Merging all plots and removing lunch_break">
-      <change beforePath="$PROJECT_DIR$/CONSTANT.py" beforeDir="false" afterPath="$PROJECT_DIR$/CONSTANT.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Context.py" beforeDir="false" afterPath="$PROJECT_DIR$/Context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bokehServerMinimal.py" beforeDir="false" afterPath="$PROJECT_DIR$/bokehServerMinimal.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataLoader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataLoader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dfManipulations.py" beforeDir="false" afterPath="$PROJECT_DIR$/dfManipulations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exposedFlaskServer.py" beforeDir="false" afterPath="$PROJECT_DIR$/exposedFlaskServer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/masterPlot.py" beforeDir="false" afterPath="$PROJECT_DIR$/masterPlot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ohlc29.py" beforeDir="false" afterPath="$PROJECT_DIR$/ohlc29.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scratch.py" beforeDir="false" afterPath="$PROJECT_DIR$/scratch.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +172,8 @@
       <workItem from="1604170681250" duration="13236000" />
       <workItem from="1604227945816" duration="42017000" />
       <workItem from="1604273919913" duration="5337000" />
-      <workItem from="1604458027428" duration="97000" />
+      <workItem from="1604458027428" duration="1934000" />
+      <workItem from="1604464917551" duration="161000" />
     </task>
     <task id="LOCAL-00001" summary="v 1.0">
       <created>1603862286454</created>
@@ -431,7 +427,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604277780056</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="1.2 Running well">
+      <created>1604460935644</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1604460935644</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -485,7 +488,8 @@
     <MESSAGE value="1.17.1 Merging all plots" />
     <MESSAGE value="1.17.1 Before Merging all plots and removing lunch_break" />
     <MESSAGE value="1.18 before Morning" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.18 before Morning" />
+    <MESSAGE value="1.2 Running well" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.2 Running well" />
   </component>
   <component name="WindowStateProjectService">
     <state x="433" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603912517899">
@@ -588,8 +592,8 @@
       <screen x="31" y="0" width="1889" height="1080" />
     </state>
     <state width="498" height="446" key="SwitcherDM/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1603935611631" />
-    <state x="508" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604277792337">
-      <screen x="39" y="0" width="1881" height="1080" />
+    <state x="513" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2" timestamp="1604460943196">
+      <screen x="45" y="0" width="1875" height="1080" />
     </state>
     <state x="479" y="273" width="810" height="540" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1604011263384" />
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/1920.0.1920.1080/31.0.1889.1080@31.0.1889.1080" timestamp="1603988093413" />
@@ -597,6 +601,7 @@
     <state x="502" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/31.0.1889.1080/1920.0.1920.1080@31.0.1889.1080" timestamp="1604052501814" />
     <state x="508" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/39.0.1881.1080/1920.0.1920.1080@39.0.1881.1080" timestamp="1604277792337" />
     <state x="509" y="273" width="800" height="529" key="Vcs.Push.Dialog.v2/40.0.1880.1080/1920.0.1920.1080@40.0.1880.1080" timestamp="1604132175559" />
+    <state x="513" y="273" key="Vcs.Push.Dialog.v2/45.0.1875.1080/1920.0.1920.1080@45.0.1875.1080" timestamp="1604460943196" />
     <state x="718" y="191" width="287" height="683" key="VcsDiffUtil.ChangesDialog" timestamp="1604133872633">
       <screen x="40" y="0" width="1880" height="1080" />
     </state>

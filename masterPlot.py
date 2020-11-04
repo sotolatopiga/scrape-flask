@@ -7,6 +7,7 @@ from bokeh.models import ColumnDataSource, Range1d, CrosshairTool, WheelZoomTool
 from bokeh.layouts import column, row, layout
 from ohlc29 import genOHCLpage
 from dfManipulations import filterOutNonTradingTime, computeMinuteData, createColumnDataSource
+from requester import fetchPhaiSinhData, fetchHoseIndicatorsData
 
 
 import urllib.request, json
@@ -73,12 +74,11 @@ def update(doc: Document):
     psOrders, dfPsMinute = fetchPhaiSinhData()
 
     n = datetime.now()
-
     delta = (n.second + n.minute * 60 + n.hour * 3600) - psOrders[-1]['hour'] * 3600 - psOrders[-1]['minute'] * 60 - \
             psOrders[-1]['second']
     text = f"Số lượng Hose data point đã scraped được: <br/> {len(idf)}<br/>"
     text += f"Số order phái sinh đã match trong ngày: <br/>{len(psOrders)} <br/>"
-    # text += f"Lần gần nhất cách đây {delta} giây <br/><br/>"
+    text += f"Lần gần nhất cách đây {delta} giây <br/><br/>"
     text += f"Dư mua: {idf.iloc[-1]['buyPressure']:.2f} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"
     text += f"Dư bán: {idf.iloc[-1]['sellPressure']:.2f} <br/>"
     text += f"NN mua(total): {idf.iloc[-1]['nnBuy']:.2f} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"
@@ -109,7 +109,7 @@ def update(doc: Document):
     # currentSource.data['index'] += hoseupdate['index']
     # currentSource.stream(hoseupdate)
 
-    text += f"<br/><br/>Số data-points mới cho HOSE chưa được cập nhật: <br/>{numHoseUpdates-1}<br/>"
+    text += f"<br/><br/>Số data-points mới cho HOSE chưa được cập nhật: <br/>{numHoseUpdates}<br/>"
     # currentSource.keys ['buyPressure', 'sellPressure', 'index']
     #hose
 
@@ -122,9 +122,7 @@ def update(doc: Document):
     if nUnupdatedPSOrders > 0:
         pass
     ############################################### Ps Pressure ##############################################
-    if (datetime.now().hour*60 +  datetime.now().minute) > 14*60 + 30:
-        dt.text = text
-        return
+
     with urllib.request.urlopen("http://localhost:5001/ps-pressure-out") as url:
         data = json.loads(url.read().decode())
     data = data["psPressure"]
@@ -163,26 +161,8 @@ def hookUpPlots(pCandle, pBuySell, pVolume, divCandle, divText, crosshairTool):
 
 ########################################################################################################################
 
-def fetchHoseIndicatorsData():
-    with urllib.request.urlopen("http://localhost:5000/api/hose-indicators-outbound") as url:
-        data = json.loads(url.read().decode())
-    return pd.DataFrame([dp for dp in data if dp is not None])
 
-
-def fetchPhaiSinhData():
-    from ohlc29 import ohlcFromPrices, createDFfromOrderBook
-    import urllib.request, json
-    from CONSTANT import DATE
-    with urllib.request.urlopen("http://localhost:5001/ps-pressure-out") as url:
-        data = json.loads(url.read().decode())  # ['orders', 'psPressure']
-
-    rawData = data
-    priceSeries, volumeSeries = createDFfromOrderBook(rawData['orders'], DATE)
-
-    df, dic, resampled = ohlcFromPrices(priceSeries, volumeSeries)
-    df = filterOutNonTradingTime(pd.DataFrame(dic).set_index("date"))
-
-    return rawData['orders'], df
+    return data, df
 
 
 def makeMasterPlot():
@@ -217,8 +197,7 @@ def makeMasterPlot():
     return page
 
 
-#output_file("/tmp/foo.html"); page, activate = makeMasterPlot(); show(page)
-
-
+# output_file("/tmp/foo.html"); show(makeMasterPlot())
+# page, foo = makeMasterPlot()
 # curdoc().add_root(page)
 # OVER_TIME = True # TODO: Write smart back/front(scrape) code to avoid crashing when over time
