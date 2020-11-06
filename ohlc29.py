@@ -87,6 +87,8 @@ def plotPsUntrimmed(df):        # Index is time
 
 def plotPsTrimmed(df, OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):          # Index is rather meaningless 'i'
     redCandleAlpha = [0] * len(df)
+    print(df)
+    print(len(df))
     for i in range(len(df)):
         if df.open.values[i] > df.close.values[i]: redCandleAlpha[i] = 1
     df['redCandleAlpha'] = redCandleAlpha
@@ -116,7 +118,6 @@ def plotPsTrimmed(df, OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):          # Index is ra
     p.toolbar.active_scroll = wheel_zoom
     return p
 
-
 def display_event(div, attributes=[], style = 'float:left;clear:left;font_size=13px'):
     "Build a suitable CustomJS to display the current event in the div model."
     return CustomJS(args=dict(div=div), code="""
@@ -137,7 +138,6 @@ def display_event(div, attributes=[], style = 'float:left;clear:left;font_size=1
         div.text = lines.join("\\n");
     """)
 
-
 def hookupFigure(p, display_event=display_event):
     div = Div(width=400, height=100, height_policy="fixed", name="divCustomJS")
     p.js_on_event(events.LODStart, display_event(div))  # Start of LOD display
@@ -154,7 +154,6 @@ def hookupFigure(p, display_event=display_event):
 # output_file("candlestick_trimmed.html", title="candlestick.py example")
 # show(column(p, div))
 
-
 def  createDFfromOrderBook(psOrders, DATE):
     index = pd.date_range(f'{DATE} 09:00:00', f'{DATE} 14:45:59', freq='S')
     prices = [None] * len(index)
@@ -168,14 +167,13 @@ def  createDFfromOrderBook(psOrders, DATE):
 
     return pd.Series(prices[:last], index=index[:last]), pd.Series(volumes[:last], index=index[:last])
 
-
 def genOHCLpage(OHLC_PLOT_HEIGHT=OHLC_PLOT_HEIGHT):
     import urllib.request, json
-    with urllib.request.urlopen("http://localhost:5000/api/ps-ohlc-outbound") as url:
-        data = json.loads(url.read().decode())
+    with urllib.request.urlopen("http://localhost:5001/ps-pressure-out") as url:
+        data = json.loads(url.read().decode())  # ['orders', 'psPressure']
 
     rawData = data
-    priceSeries, volumeSeries = createDFfromOrderBook(rawData, DATE)
+    priceSeries, volumeSeries = createDFfromOrderBook(rawData['orders'], DATE)
     df, dic, resampled = ohlcFromPrices(priceSeries, volumeSeries)
     df = filterOutNonTradingTime(pd.DataFrame(dic).set_index("date"), num=len(data))
     ohlcPlot = plotPsTrimmed(df, OHLC_PLOT_HEIGHT)  # This df is untrimed
